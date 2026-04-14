@@ -1,10 +1,65 @@
 BOOTS:
 Armored Advance:
+
   Unique – Plating: Reduces all incoming An icon representing the keyword Basic damage basic damage by 10% (excluding from turret attacks).
   Unique – Noxian Endurance: Taking physical damage from champions grants you a An icon representing the keyword Shield shield that absorbs 100 – 200 (based     on level) (+ 8% bonus health) physical damage for 5 seconds (15 second cooldown).
 
+Berserker's Greaves:
+  +25% attack speed
+  +45 movement speed
 
+Boots:
+  +25 movement speed
 
+Boots of Swiftness:
+  +55 movement speed
+  Unique – Fleetfooted: Gain 25% slow resist.
+
+Chainlaced Crushers:
+  +30 magic resistance
+  +45 movement speed
+  +30% tenacity
+  Unique – Noxian Persistence: Taking magic damage from champions grants you a An icon representing the keyword Shield shield that absorbs 100 – 200 (based on level) (+ 8% bonus health) magic damage for 5 seconds (15 second cooldown).
+
+Crimson Lucidity:
+  +20 ability haste
+  +45 movement speed
+  Unique – Ionian Lucidity: Gain 20 summoner spell haste.
+  Unique – Noxian Haste: An icon representing the keyword Heal Healing, An icon representing the keyword Shield shielding or buffing an ally, damaging abilities against champions, and using summoner spells grants you (An icon representing the keyword Melee 10% / An icon representing the keyword Ranged 8%) bonus movement speed for 4 seconds. This can be triggered from the same cast instance only once every 4 seconds.
+
+Gunmetal Greaves:
+  +40% attack speed
+  +45 movement speed
+  +5% life steal
+
+Ionian Boots of Lucidity:
+  +10 ability haste
+  +45 movement speed
+  Unique – Ionian Insight: Gain 10 summoner spell haste.
+
+Mercury's Treads:
+  +20 magic resistance
+  +45 movement speed
+  +30% tenacity
+
+Plated Steelcaps:
+  +25 armor
+  +45 movement speed
+  Unique – Plating: Reduces all incoming An icon representing the keyword Basic damage basic damage by 10% (excluding from turret attacks).
+
+Sorcerer's Shoes:
+  +12 magic penetration
+  +45 movement speed
+
+Spellslinger's Shoes:
+  +8% magic penetration
+  +18 magic penetration
+  +45 movement speed
+
+Swiftmarch:
+  +65 movement speed
+  Unique – Fleetfooted: Gain 40% slow resist.
+  Unique – Noxian Fervor: Gain An icon representing the keyword Adaptive force adaptive force equal to 5% of your total movement speed.
 --------------
 BASIC:
 
