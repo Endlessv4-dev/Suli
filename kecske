@@ -115,7 +115,73 @@ EPIC:
 -------------
 LEGENDARY:
 
+Death's Dance
+	+60 attack damage
+	+15 ability haste
+	+50 armor
+	Unique – Ignore Pain: Reduces (An icon representing the keyword Melee 30% / An icon representing the keyword Ranged 10%) of all 	post-mitigation physical and magic damage received and instead stores the damage to successively take it as true damage over 3 	seconds, dealing a third of the stored damage each second.
+	Unique – Defy: If an enemy champion dies within 3 seconds of you damaging them, removes Ignore Pain's remaining stored damage and An 	icon representing the keyword Heal heals you for 75% bonus AD over 2 seconds.
 
+Nashor's Tooth:
+	+80 ability power
+	+15 ability haste
+	+50% attack speed
+	Passive
+	Unique – Icathian Bite: Basic attacks deal 15 (+ 15% AP) bonus magic damage on-hit.
+
+Thornmail: 
+	+75 armor
+	+150 health
+	Passive
+	Unique – Thorns: When struck by a basic attack on-hit, deal 20 (+ 10% bonus armor) magic damage to the attacker and, if they are a champion, inflict them with An icon representing the keyword Grievous wounds Grievous Wounds for 3 seconds.
+
+Zhonya's Hourglass:
+	+105 ability power
+	+50 armor
+	Active
+	Unique – Time Stop: Put yourself in An icon representing the keyword Stasis (buff) stasis for 2.5 seconds, rendering you An icon representing the keyword Untargetable untargetable and An icon representing the keyword Invulnerability invulnerable for the duration but also unable to move, declare basic attacks, cast abilities, use summoner spells, or activate items (120 second cooldown).
+
+Sterak's Gage:
+	+400 health
+	+20% tenacity
+	Passive
+	Unique – The Claws that Catch: Gain bonus attack damage equal to 45% base AD.
+	Unique – Lifeline: If you would take damage that would reduce you below 30% of your maximum health, you first gain a An icon representing the keyword Shield shield that absorbs damage equal to 60% of bonus health which decays over 4.5 seconds (90 second cooldown).
+
+Heartsteel:
+	Unique – Colossal Consumption: While within 700 units of an enemy champion, generate a stack on them each second, stacking up to 3 times. Your next basic attack against a target with 3 stacks is empowered to consume them all to deal 70 (+ 6% maximum health) bonus physical damage on-hit and grant you permanent bonus health equal to「 8% of that amount 」 (30 second cooldown per target).
+	Unique – Goliath: Gain 0% – 30% (based on maximum health) increased size.
+
+The Collector:
+	+50 attack damage
+	+10 lethality
+	+25% critical strike chance
+	Passive
+	Unique – Death: If you deal post-mitigation damage that would leave a champion below 5% of their maximum health, An icon representing the keyword Execute execute them.
+	Unique – Taxes: Killing a champion grants you an additional An icon representing Gold 25.
+
+Liandry's Torment:
+	+60 ability power
+	+300 health
+	Passive
+	Unique – Torment: Dealing ability damage burns enemies, causing them to take「 1% of the target's maximum health magic damage every 0.5 seconds over 3 seconds, capped at 20 per tick against monsters. 」
+	Unique – Suffering: For each second in combat with enemy champions, deal 2% increased damage, stacking up to 3 times for a total of 6%.
+
+Overlord's Bloodmail:
+	+30 attack damage
+	+550 health
+	Passive
+	Unique – Tyranny: Gain bonus attack damage equal to 2.5% bonus health.
+	Unique – Retribution: Gain bonus attack damage equal to 0% – 12% (based on missing health) of your total attack damage from other sources.
+
+Titanic Hydra:
+	+40 attack damage
+	+600 health
+	Active
+	Unique – Titanic Crescent: Your next basic attack on-hit within 10 seconds empowers Cleave to deal (An icon representing the keyword Melee 4% / An icon representing the keyword Ranged 2%) maximum health bonus physical damage to the primary target and (An icon representing the keyword Melee 9% / An icon representing the keyword Ranged 4.5%) maximum health physical damage to secondary targets (10 second cooldown, starts after using the empowered attack).
+	Titanic Crescent resets the user's basic attack timer.
+	Passive
+	Unique – Cleave: Basic attacks on-hit deal (An icon representing the keyword Melee 1% / An icon representing the keyword Ranged 0.5%) maximum health bonus physical damage to the target and (An icon representing the keyword Melee 3% / An icon representing the keyword Ranged 1.5%) maximum health physical damage to other enemies in a cone in the direction of the primary target.
 
 
 
