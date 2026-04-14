@@ -1,8 +1,8 @@
 BOOTS:
 Armored Advance:
 
-  Unique – Plating: Reduces all incoming An icon representing the keyword Basic damage basic damage by 10% (excluding from turret attacks).
-  Unique – Noxian Endurance: Taking physical damage from champions grants you a An icon representing the keyword Shield shield that absorbs 100 – 200 (based     on level) (+ 8% bonus health) physical damage for 5 seconds (15 second cooldown).
+  Unique – Plating: Reduces all incoming  Basic damage basic damage by 10% (excluding from turret attacks).
+  Unique – Noxian Endurance: Taking physical damage from champions grants you a  Shield shield that absorbs 100 – 200 (based     on level) (+ 8% bonus health) physical damage for 5 seconds (15 second cooldown).
 
 Berserker's Greaves:
   +25% attack speed
@@ -19,13 +19,13 @@ Chainlaced Crushers:
   +30 magic resistance
   +45 movement speed
   +30% tenacity
-  Unique – Noxian Persistence: Taking magic damage from champions grants you a An icon representing the keyword Shield shield that absorbs 100 – 200 (based on level) (+ 8% bonus health) magic damage for 5 seconds (15 second cooldown).
+  Unique – Noxian Persistence: Taking magic damage from champions grants you a  Shield shield that absorbs 100 – 200 (based on level) (+ 8% bonus health) magic damage for 5 seconds (15 second cooldown).
 
 Crimson Lucidity:
   +20 ability haste
   +45 movement speed
   Unique – Ionian Lucidity: Gain 20 summoner spell haste.
-  Unique – Noxian Haste: An icon representing the keyword Heal Healing, An icon representing the keyword Shield shielding or buffing an ally, damaging abilities against champions, and using summoner spells grants you (An icon representing the keyword Melee 10% / An icon representing the keyword Ranged 8%) bonus movement speed for 4 seconds. This can be triggered from the same cast instance only once every 4 seconds.
+  Unique – Noxian Haste:  Heal Healing,  Shield shielding or buffing an ally, damaging abilities against champions, and using summoner spells grants you ( Melee 10% /  Ranged 8%) bonus movement speed for 4 seconds. This can be triggered from the same cast instance only once every 4 seconds.
 
 Gunmetal Greaves:
   +40% attack speed
@@ -45,7 +45,7 @@ Mercury's Treads:
 Plated Steelcaps:
   +25 armor
   +45 movement speed
-  Unique – Plating: Reduces all incoming An icon representing the keyword Basic damage basic damage by 10% (excluding from turret attacks).
+  Unique – Plating: Reduces all incoming  Basic damage basic damage by 10% (excluding from turret attacks).
 
 Sorcerer's Shoes:
   +12 magic penetration
@@ -59,7 +59,7 @@ Spellslinger's Shoes:
 Swiftmarch:
   +65 movement speed
   Unique – Fleetfooted: Gain 40% slow resist.
-  Unique – Noxian Fervor: Gain An icon representing the keyword Adaptive force adaptive force equal to 5% of your total movement speed.
+  Unique – Noxian Fervor: Gain  Adaptive force adaptive force equal to 5% of your total movement speed.
 --------------
 BASIC: (ezeknek nincs passivejuk)
 Amplifying Tome:
@@ -108,8 +108,63 @@ Sapphire Crystal:
   +300 mana
 --------------
 EPIC:
+Bami's Cinder:
+	+5 ability haste
+	+150 health
+	Passive
+	Unique – Immolate: Taking or dealing damage activates this passive for 3 seconds. Deal 15 magic damage every second to enemies within An icon representing the keyword Centered range 325 (+ 100% bonus size) units, with the damage being increased to 150% against An icon representing the keyword Minion minions and 200% against An icon representing the keyword Monster monsters. This executes minions that would be killed by one more tick of damage.
 
+Bramble Vest:
+	+30 armor
+	Passive
+	Unique – Thorns: When struck by a basic attack on-hit, deal 10 magic damage to the attacker and, if they are a champion, inflict them with An icon representing the keyword Grievous wounds Grievous Wounds for 3 seconds.
 
+Haunting Guise:
+	+30 ability power
+	+200 health
+	Passive
+	Madness: For each second in combat with enemy champions, deal 2% increased damage, stacking up to 3 times for a total of 6%.
+
+Fated Ashes:
+	+30 ability power
+	Passive
+	Unique – Inflame: Dealing ability damage burns enemies, causing them to take 2.5 magic damage every 0.5 seconds over 3 seconds, for a total of 15. Against monsters, the burn deals 7.5 bonus magic damage per tick, dealing a total of 10 magic damage per tick for up to 60.
+
+Seeker's Armguard:
+	+40 ability power
+	+25 armor
+	Active
+	Unique – Time Stop: Put yourself in An icon representing the keyword Stasis (buff) stasis for 2.5 seconds, rendering you An icon representing the keyword Untargetable untargetable and An icon representing the keyword Invulnerability invulnerable for the duration but also unable to move, declare basic attacks, cast abilities, use summoner spells, or activate items.
+
+Oblivion Orb:
+	+25 ability power
+	Passive
+	Unique – Grievous Wounds: Dealing magic damage to enemy champions inflicts them with An icon representing the keyword Grievous wounds Grievous Wounds for 3 seconds.
+
+Hexdrinker: 
+	+25 attack damage
+	+25 magic resistance
+	Passive
+	Unique – Lifeline: If you would take magic damage that would reduce you below 30% of your maximum health, you first gain a An icon representing the keyword Shield shield that absorbs (An icon representing the keyword Melee 110 – 280 / An icon representing the keyword Ranged 82.5 – 210) (based on level) magic damage for 2.5 seconds (90 second cooldown).
+
+Sheen:
+	+10 ability haste
+	Passive
+	Unique – Spellblade: After using an ability, your next basic attack within 10 seconds deals 100% base AD bonus physical damage on-hit (1.5 second cooldown, starts after using the empowered attack).
+
+Tiamat:
+	+20 attack damage
+	Active
+	Unique – Crescent: Deal 75% AD physical damage to enemies within a An icon representing the keyword Centered range 450 radius in front of you (10 second cooldown).
+	Passive
+	Unique – Cleave: Basic attacks on-hit deal (An icon representing the keyword Melee 40% AD / An icon representing the keyword Ranged 20% AD) physical damage to other enemies in a An icon representing the keyword Centered range 350 radius centered around the target.
+
+Lost Chapter:
+	+40 ability power
+	+10 ability haste
+	+300 mana
+	Passive
+	Unique – Enlighten: Upon leveling up, restores 20% of maximum mana over 3 seconds.
 
 
 -------------
@@ -119,7 +174,7 @@ Death's Dance
 	+60 attack damage
 	+15 ability haste
 	+50 armor
-	Unique – Ignore Pain: Reduces (An icon representing the keyword Melee 30% / An icon representing the keyword Ranged 10%) of all 	post-mitigation physical and magic damage received and instead stores the damage to successively take it as true damage over 3 	seconds, dealing a third of the stored damage each second.
+	Unique – Ignore Pain: Reduces ( Melee 30% /  Ranged 10%) of all 	post-mitigation physical and magic damage received and instead stores the damage to successively take it as true damage over 3 	seconds, dealing a third of the stored damage each second.
 	Unique – Defy: If an enemy champion dies within 3 seconds of you damaging them, removes Ignore Pain's remaining stored damage and An 	icon representing the keyword Heal heals you for 75% bonus AD over 2 seconds.
 
 Nashor's Tooth:
@@ -133,20 +188,20 @@ Thornmail:
 	+75 armor
 	+150 health
 	Passive
-	Unique – Thorns: When struck by a basic attack on-hit, deal 20 (+ 10% bonus armor) magic damage to the attacker and, if they are a champion, inflict them with An icon representing the keyword Grievous wounds Grievous Wounds for 3 seconds.
+	Unique – Thorns: When struck by a basic attack on-hit, deal 20 (+ 10% bonus armor) magic damage to the attacker and, if they are a champion, inflict them with  Grievous wounds Grievous Wounds for 3 seconds.
 
 Zhonya's Hourglass:
 	+105 ability power
 	+50 armor
 	Active
-	Unique – Time Stop: Put yourself in An icon representing the keyword Stasis (buff) stasis for 2.5 seconds, rendering you An icon representing the keyword Untargetable untargetable and An icon representing the keyword Invulnerability invulnerable for the duration but also unable to move, declare basic attacks, cast abilities, use summoner spells, or activate items (120 second cooldown).
+	Unique – Time Stop: Put yourself in  Stasis (buff) stasis for 2.5 seconds, rendering you  Untargetable untargetable and  Invulnerability invulnerable for the duration but also unable to move, declare basic attacks, cast abilities, use summoner spells, or activate items (120 second cooldown).
 
 Sterak's Gage:
 	+400 health
 	+20% tenacity
 	Passive
 	Unique – The Claws that Catch: Gain bonus attack damage equal to 45% base AD.
-	Unique – Lifeline: If you would take damage that would reduce you below 30% of your maximum health, you first gain a An icon representing the keyword Shield shield that absorbs damage equal to 60% of bonus health which decays over 4.5 seconds (90 second cooldown).
+	Unique – Lifeline: If you would take damage that would reduce you below 30% of your maximum health, you first gain a  Shield shield that absorbs damage equal to 60% of bonus health which decays over 4.5 seconds (90 second cooldown).
 
 Heartsteel:
 	Unique – Colossal Consumption: While within 700 units of an enemy champion, generate a stack on them each second, stacking up to 3 times. Your next basic attack against a target with 3 stacks is empowered to consume them all to deal 70 (+ 6% maximum health) bonus physical damage on-hit and grant you permanent bonus health equal to「 8% of that amount 」 (30 second cooldown per target).
@@ -157,7 +212,7 @@ The Collector:
 	+10 lethality
 	+25% critical strike chance
 	Passive
-	Unique – Death: If you deal post-mitigation damage that would leave a champion below 5% of their maximum health, An icon representing the keyword Execute execute them.
+	Unique – Death: If you deal post-mitigation damage that would leave a champion below 5% of their maximum health,  Execute execute them.
 	Unique – Taxes: Killing a champion grants you an additional An icon representing Gold 25.
 
 Liandry's Torment:
@@ -178,10 +233,10 @@ Titanic Hydra:
 	+40 attack damage
 	+600 health
 	Active
-	Unique – Titanic Crescent: Your next basic attack on-hit within 10 seconds empowers Cleave to deal (An icon representing the keyword Melee 4% / An icon representing the keyword Ranged 2%) maximum health bonus physical damage to the primary target and (An icon representing the keyword Melee 9% / An icon representing the keyword Ranged 4.5%) maximum health physical damage to secondary targets (10 second cooldown, starts after using the empowered attack).
+	Unique – Titanic Crescent: Your next basic attack on-hit within 10 seconds empowers Cleave to deal ( Melee 4% /  Ranged 2%) maximum health bonus physical damage to the primary target and ( Melee 9% /  Ranged 4.5%) maximum health physical damage to secondary targets (10 second cooldown, starts after using the empowered attack).
 	Titanic Crescent resets the user's basic attack timer.
 	Passive
-	Unique – Cleave: Basic attacks on-hit deal (An icon representing the keyword Melee 1% / An icon representing the keyword Ranged 0.5%) maximum health bonus physical damage to the target and (An icon representing the keyword Melee 3% / An icon representing the keyword Ranged 1.5%) maximum health physical damage to other enemies in a cone in the direction of the primary target.
+	Unique – Cleave: Basic attacks on-hit deal ( Melee 1% /  Ranged 0.5%) maximum health bonus physical damage to the target and ( Melee 3% /  Ranged 1.5%) maximum health physical damage to other enemies in a cone in the direction of the primary target.
 
 
 
