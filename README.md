@@ -14,7 +14,7 @@
 <img width="64" height="64" alt="Spellslinger&#39;s_Shoes_item" src="https://github.com/user-attachments/assets/b8156649-885d-403e-a189-11818dd7b227" />
 <img width="64" height="64" alt="Swiftmarch_item" src="https://github.com/user-attachments/assets/4a80cb1d-7b24-4701-82eb-37d185b91eba" />
 
-# Basic Items
+## Basic Items
 <img width="64" height="64" alt="Amplifying_Tome_item" src="https://github.com/user-attachments/assets/61795b9e-110a-408f-a6ae-c3df35abcada" />
 <img width="64" height="64" alt="B _F _Sword_item" src="https://github.com/user-attachments/assets/53164453-0bf0-4e89-b43d-6ae7c4951483" />
 <img width="64" height="64" alt="Blasting_Wand_item" src="https://github.com/user-attachments/assets/385803b2-20d2-4eab-b60d-e588d9747c30" />
@@ -31,7 +31,7 @@
 <img width="64" height="64" alt="Ruby_Crystal_item" src="https://github.com/user-attachments/assets/69416386-4d9e-4408-8e0f-e06cbf272103" />
 <img width="64" height="64" alt="Sapphire_Crystal_item" src="https://github.com/user-attachments/assets/88c9dd08-9b36-4a31-aa20-cdc0b993a2cf" />
 
-# Epic Items
+## Epic Items
 
 
 
