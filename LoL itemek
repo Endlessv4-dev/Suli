@@ -1,6 +1,7 @@
 BOOTS:
 Armored Advance:
-
+  +35 armor
+  +45 movement speed
   Unique – Plating: Reduces all incoming  Basic damage basic damage by 10% (excluding from turret attacks).
   Unique – Noxian Endurance: Taking physical damage from champions grants you a  Shield shield that absorbs 100 – 200 (based     on level) (+ 8% bonus health) physical damage for 5 seconds (15 second cooldown).
 
