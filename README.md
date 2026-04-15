@@ -32,6 +32,26 @@
 <img width="64" height="64" alt="Sapphire_Crystal_item" src="https://github.com/user-attachments/assets/88c9dd08-9b36-4a31-aa20-cdc0b993a2cf" />
 
 ## Epic Items
+<img width="64" height="64" alt="Bami&#39;s_Cinder_item" src="https://github.com/user-attachments/assets/13cb5190-6fc7-405f-85ff-973ffe4dd417" />
+<img width="64" height="64" alt="Bramble_Vest_item" src="https://github.com/user-attachments/assets/e1683bc1-4dc4-4e97-83ae-63b954652b53" />
+<img width="64" height="64" alt="Haunting_Guise_item" src="https://github.com/user-attachments/assets/bd597182-428f-4aec-8887-84ea5b1b2613" />
+<img width="64" height="64" alt="Fated_Ashes_item" src="https://github.com/user-attachments/assets/2c82f8ca-1cf2-4358-8912-dfd7611b7461" />
+<img width="64" height="64" alt="Seeker&#39;s_Armguard_item" src="https://github.com/user-attachments/assets/8ca494cc-9029-4898-97c7-33b1141a1eb2" />
+<img width="64" height="64" alt="Oblivion_Orb_item" src="https://github.com/user-attachments/assets/83a542b6-af19-41e5-9326-724fa4abcefc" />
+<img width="64" height="64" alt="Hexdrinker_item" src="https://github.com/user-attachments/assets/43a21045-bcc1-46bd-aa52-122074f9e383" />
+<img width="64" height="64" alt="Sheen_item" src="https://github.com/user-attachments/assets/506bdb21-8948-45ab-ba59-fa25a94fbf91" />
+<img width="64" height="64" alt="Tiamat_item" src="https://github.com/user-attachments/assets/dc19bf0a-f4cb-47c3-92e7-dcff7df2a617" />
+<img width="64" height="64" alt="Lost_Chapter_item" src="https://github.com/user-attachments/assets/22037d2f-f856-40c4-9863-bc07712701a5" />
 
-
+## Legendary Items
+<img width="64" height="64" alt="Death&#39;s_Dance_item" src="https://github.com/user-attachments/assets/34bedf25-276d-4154-96e3-0a5325e0eea3" />
+<img width="64" height="64" alt="Nashor&#39;s_Tooth_item" src="https://github.com/user-attachments/assets/26e1458c-78cb-4f4f-86a7-9124039a2e5d" />
+<img width="64" height="64" alt="Thornmail_item" src="https://github.com/user-attachments/assets/9e901586-4d5e-433d-b80a-6dd3bbdb1b7e" />
+<img width="64" height="64" alt="Zhonya&#39;s_Hourglass_item" src="https://github.com/user-attachments/assets/6c0cec1f-5830-4d3c-bf0b-dd2335f8f635" />
+<img width="64" height="64" alt="Sterak&#39;s_Gage_item" src="https://github.com/user-attachments/assets/30166052-fe07-41e3-97af-e80a372c1360" />
+<img width="64" height="64" alt="Heartsteel_item" src="https://github.com/user-attachments/assets/3087d5f2-b7ad-4817-9b7e-bb68409560ab" />
+<img width="64" height="64" alt="The_Collector_item" src="https://github.com/user-attachments/assets/1875b2fa-0735-485f-b778-93541d608534" />
+<img width="64" height="64" alt="Liandry&#39;s_Torment_item" src="https://github.com/user-attachments/assets/e9ff60a4-ea6f-4ba2-9a33-b9f65d4a4490" />
+<img width="64" height="64" alt="Overlord&#39;s_Bloodmail_item" src="https://github.com/user-attachments/assets/751c9b8d-af4a-4052-82a1-0045572396f7" />
+<img width="64" height="64" alt="Titanic_Hydra_item" src="https://github.com/user-attachments/assets/ffdded53-b1f4-4944-8dcb-fd46b2dc7042" />
 
