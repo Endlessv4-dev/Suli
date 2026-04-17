@@ -113,12 +113,12 @@ Bami's Cinder:
 	+5 ability haste
 	+150 health
 	Passive
-	Unique – Immolate: Taking or dealing damage activates this passive for 3 seconds. Deal 15 magic damage every second to enemies within An icon representing the keyword Centered range 325 (+ 100% bonus size) units, with the damage being increased to 150% against An icon representing the keyword Minion minions and 200% against An icon representing the keyword Monster monsters. This executes minions that would be killed by one more tick of damage.
+	Unique – Immolate: Taking or dealing damage activates this passive for 3 seconds. Deal 15 magic damage every second to enemies within Centered range 325 (+ 100% bonus size) units, with the damage being increased to 150% against  Minion minions and 200% against  Monster monsters. This executes minions that would be killed by one more tick of damage.
 
 Bramble Vest:
 	+30 armor
 	Passive
-	Unique – Thorns: When struck by a basic attack on-hit, deal 10 magic damage to the attacker and, if they are a champion, inflict them with An icon representing the keyword Grievous wounds Grievous Wounds for 3 seconds.
+	Unique – Thorns: When struck by a basic attack on-hit, deal 10 magic damage to the attacker and, if they are a champion, inflict them with Grievous wounds Grievous Wounds for 3 seconds.
 
 Haunting Guise:
 	+30 ability power
@@ -135,18 +135,18 @@ Seeker's Armguard:
 	+40 ability power
 	+25 armor
 	Active
-	Unique – Time Stop: Put yourself in An icon representing the keyword Stasis (buff) stasis for 2.5 seconds, rendering you An icon representing the keyword Untargetable untargetable and An icon representing the keyword Invulnerability invulnerable for the duration but also unable to move, declare basic attacks, cast abilities, use summoner spells, or activate items.
+	Unique – Time Stop: Put yourself in  Stasis (buff) stasis for 2.5 seconds, rendering you  Untargetable untargetable and Invulnerability invulnerable for the duration but also unable to move, declare basic attacks, cast abilities, use summoner spells, or activate items.
 
 Oblivion Orb:
 	+25 ability power
 	Passive
-	Unique – Grievous Wounds: Dealing magic damage to enemy champions inflicts them with An icon representing the keyword Grievous wounds Grievous Wounds for 3 seconds.
+	Unique – Grievous Wounds: Dealing magic damage to enemy champions inflicts them with  Grievous wounds Grievous Wounds for 3 seconds.
 
 Hexdrinker: 
 	+25 attack damage
 	+25 magic resistance
 	Passive
-	Unique – Lifeline: If you would take magic damage that would reduce you below 30% of your maximum health, you first gain a An icon representing the keyword Shield shield that absorbs (An icon representing the keyword Melee 110 – 280 / An icon representing the keyword Ranged 82.5 – 210) (based on level) magic damage for 2.5 seconds (90 second cooldown).
+	Unique – Lifeline: If you would take magic damage that would reduce you below 30% of your maximum health, you first gain a  Shield shield that absorbs ( Melee 110 – 280 /  Ranged 82.5 – 210) (based on level) magic damage for 2.5 seconds (90 second cooldown).
 
 Sheen:
 	+10 ability haste
@@ -156,9 +156,9 @@ Sheen:
 Tiamat:
 	+20 attack damage
 	Active
-	Unique – Crescent: Deal 75% AD physical damage to enemies within a An icon representing the keyword Centered range 450 radius in front of you (10 second cooldown).
+	Unique – Crescent: Deal 75% AD physical damage to enemies within a  Centered range 450 radius in front of you (10 second cooldown).
 	Passive
-	Unique – Cleave: Basic attacks on-hit deal (An icon representing the keyword Melee 40% AD / An icon representing the keyword Ranged 20% AD) physical damage to other enemies in a An icon representing the keyword Centered range 350 radius centered around the target.
+	Unique – Cleave: Basic attacks on-hit deal ( Melee 40% AD /  Ranged 20% AD) physical damage to other enemies in a  Centered range 350 radius centered around the target.
 
 Lost Chapter:
 	+40 ability power
