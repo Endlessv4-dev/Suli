@@ -54,4 +54,3 @@
 <img width="64" height="64" alt="Liandry&#39;s_Torment_item" src="https://github.com/user-attachments/assets/e9ff60a4-ea6f-4ba2-9a33-b9f65d4a4490" />
 <img width="64" height="64" alt="Overlord&#39;s_Bloodmail_item" src="https://github.com/user-attachments/assets/751c9b8d-af4a-4052-82a1-0045572396f7" />
 <img width="64" height="64" alt="Titanic_Hydra_item" src="https://github.com/user-attachments/assets/ffdded53-b1f4-4944-8dcb-fd46b2dc7042" />
-
