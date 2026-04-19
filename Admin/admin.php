@@ -1,9 +1,112 @@
 <?php 
 
-    require "config.php";
+    require "../Connection/config.php";
 
     if (!isset($_COOKIE['admin'])) {
         header("Location: a_login.php");
     }
 
+    if (isset($_POST['save-btn'])) {
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $tier = mysqli_real_escape_string($conn, $_POST['tier']);
+        $cost = (int)$_POST['cost'];
+
+        $file_name = $_FILES['upload']['name'];
+        $tmp_name = $_FILES['upload']['tmp_name'];
+
+        $folder = dirname(__DIR__)."\\Items\\".$name;
+        if (!is_dir($folder)) {
+            mkdir($folder, 0777, true);
+        }
+
+        $path = $folder."\\".$file_name;
+
+        if (move_uploaded_file($tmp_name, $path)) {
+            $conn->query("INSERT INTO items VALUES (id, '$name', '$tier', $cost, '$file_name')");
+
+            $stmt = "SELECT * FROM items WHERE name = '$name'";
+            $item = $conn->query($stmt)->fetch_assoc();
+
+            $names = $_POST['stat_names'];
+            $values = $_POST['stat_values'];
+            $types = $_POST['stat_types'];
+
+            for ($i = 0; $i < count($names); $i++) {
+                if (!empty($names[$i]) && !empty($values[$i]) && !empty($types[$i])) {
+                    $conn->query("INSERT INTO item_stats VALUES ($item[id], '$names[$i]', $values[$i], '$types[$i]')");
+                }
+            }
+        }
+        else {
+            Error("Error while trying to upload image.");
+        }
+
+        
+    }
+
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="upload">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="tier" placeholder="Tier" required>
+        <input type="text" name="cost" placeholder="Cost" required>
+        
+        <h3>Stats</h3>
+        <div id="stat-container">
+            <div class="stat-row">
+                <select name="stat_names[]">
+                    <option value="ability_haste">Ability Haste</option>
+                    <option value="ability_power">Ability Power</option>
+                    <option value="armor">Armor</option>
+                    <option value="armor_penetration">Armor Penetration</option>
+                    <option value="attack_damage">Attack Damage</option>
+                    <option value="attack_speed">Attack Speed</option>
+                    <option value="base_health_regen">Base Health Regen</option>
+                    <option value="base_mana_regen">Base Mana Regen</option>
+                    <option value="critical_strike_chance">Critical Strike Chance</option>
+                    <option value="gold_income">Gold Income</option>
+                    <option value="heal_and_shield_power">Heal and Shield Power</option>
+                    <option value="health">Health</option>
+                    <option value="lethality">Lethality</option>
+                    <option value="life_steal">Life Steal</option>
+                    <option value="magic_penetration">Magic Penetration</option>
+                    <option value="magic_resistance">Magic Resistance</option>
+                    <option value="mana">Mana</option>
+                    <option value="movement_speed">Movement Speed</option>
+                    <option value="omnivamp">Omnivamp</option>
+                    <option value="slow_resist">Slow Resist</option>
+                    <option value="summoner_spell_haste">Summoner Spell Haste</option>
+                    <option value="tenacity">Tenacity</option>
+                    <option value="ultimate_haste">Ultimate Haste</option>
+                </select>
+                <input type="number" step="0.1" name="stat_values[]" placeholder="Value" required>
+                <select name="stat_types[]">
+                    <option value="flat">Flat</option>
+                    <option value="%">Percentage (%)</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="button" onclick="addStat()">+ Add Another Stat</button>
+        <input type="submit" name="save-btn" value="Save Item">
+    </form>
+
+    <script>
+        function addStat() {
+            const container = document.getElementById('stat-container');
+            const newRow = document.querySelector('.stat-row').cloneNode(true);
+            newRow.querySelector('input').value = "";
+            container.appendChild(newRow);
+        }
+    </script>
+</body>
+</html>
