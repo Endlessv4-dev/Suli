@@ -28,6 +28,7 @@
 
         if (move_uploaded_file($tmp_icon_file, $path_icon) && move_uploaded_file($tmp_audio_file, $path_audio)) {
             $effects = $_POST['effect_types'];
+            $description = $_POST['description'];
 
             $conn->query("INSERT INTO items VALUES (id, '$name', '$tier', $cost, '$effects', '$description', '$audio_file','$icon_file')");
 
