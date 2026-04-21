@@ -62,8 +62,10 @@
 </head>
 <body>
     <form method="post" enctype="multipart/form-data">
-        <input type="file" name="upload-audio">
-        <input type="file" name="upload-icon">
+        <label for="audio">Audio</label>
+        <input type="file" name="upload-audio" id="audio">
+        <label for="icon">Icon</label>
+        <input type="file" name="upload-icon" id="icon">
         <input type="text" name="name" placeholder="Name" required>
         <input type="text" name="tier" placeholder="Tier" required>
         <input type="text" name="cost" placeholder="Cost" required>
