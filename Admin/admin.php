@@ -24,13 +24,24 @@
         }
 
         $path_icon = $folder."\\".$icon_file;
-        $path_audio = $folder."\\".$audio_file;
 
-        if (move_uploaded_file($tmp_icon_file, $path_icon) && move_uploaded_file($tmp_audio_file, $path_audio)) {
+        if (move_uploaded_file($tmp_icon_file, $path_icon)) {
+            $audio_db_value = "-";
+
+            if (!empty($audio_file) && $_FILE['upload-audio']['error' === UPLOAD_ERR_OK]) {
+                $path_audio = $folder."\\".$audio_file;
+                if (move_uploaded_file($tmp_audio_file, $path_audio)) {
+                    $audio_db_value = $audio_file;
+                }
+                else {
+                    Error("Error while trying to upload audio");
+                }
+            }
+
             $effects = $_POST['effect_types'];
             $description = $_POST['description'];
 
-            $conn->query("INSERT INTO items VALUES (id, '$name', '$tier', $cost, '$effects', '$description', '$audio_file','$icon_file')");
+            $conn->query("INSERT INTO items VALUES (id, '$name', '$tier', $cost, '$effects', '$description', '$audio_db_value','$icon_file')");
 
             $stmt = "SELECT * FROM items WHERE name = '$name'";
             $item = $conn->query($stmt)->fetch_assoc();
@@ -46,7 +57,7 @@
             }
         }
         else {
-            Error("Error while trying to upload image.");
+            Error("Error while trying to upload icon.");
         }
 
         
@@ -66,10 +77,10 @@
         <label for="audio">Audio</label>
         <input type="file" name="upload-audio" id="audio">
         <label for="icon">Icon</label>
-        <input type="file" name="upload-icon" id="icon">
+        <input type="file" name="upload-icon" id="icon" required>
         <input type="text" name="name" placeholder="Name" required>
         <input type="text" name="tier" placeholder="Tier" required>
-        <input type="text" name="cost" placeholder="Cost" required>
+        <input type="number" name="cost" placeholder="Cost" required>
         <textarea name="description" placeholder="Description"></textarea>
         <select name="effect_types">
             <option value="none">None</option>
