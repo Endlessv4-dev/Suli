@@ -1,6 +1,7 @@
 <?php 
 
     require "../Connection/config.php";
+    require "../Functions/message.php";
 
     if (!isset($_COOKIE['admin'])) {
         header("Location: a_login.php");
@@ -11,18 +12,24 @@
         $tier = mysqli_real_escape_string($conn, $_POST['tier']);
         $cost = (int)$_POST['cost'];
 
-        $file_name = $_FILES['upload']['name'];
-        $tmp_name = $_FILES['upload']['tmp_name'];
+        $icon_file = $_FILES['upload-icon']['name'];
+        $tmp_icon_file = $_FILES['upload-icon']['tmp_name'];
+        
+        $audio_file = $_FILES['upload-audio']['name'];
+        $tmp_audio_file = $_FILES['upload-audio']['tmp_name'];
 
         $folder = dirname(__DIR__)."\\Items\\".$name;
         if (!is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
 
-        $path = $folder."\\".$file_name;
+        $path_icon = $folder."\\".$icon_file;
+        $path_audio = $folder."\\".$audio_file;
 
-        if (move_uploaded_file($tmp_name, $path)) {
-            $conn->query("INSERT INTO items VALUES (id, '$name', '$tier', $cost, '$file_name')");
+        if (move_uploaded_file($tmp_icon_file, $path_icon) && move_uploaded_file($tmp_audio_file, $path_audio)) {
+            $effects = $_POST['effect_types'];
+
+            $conn->query("INSERT INTO items VALUES (id, '$name', '$tier', $cost, '$effects', '$description', '$audio_file','$icon_file')");
 
             $stmt = "SELECT * FROM items WHERE name = '$name'";
             $item = $conn->query($stmt)->fetch_assoc();
@@ -55,11 +62,19 @@
 </head>
 <body>
     <form method="post" enctype="multipart/form-data">
-        <input type="file" name="upload">
+        <input type="file" name="upload-audio">
+        <input type="file" name="upload-icon">
         <input type="text" name="name" placeholder="Name" required>
         <input type="text" name="tier" placeholder="Tier" required>
         <input type="text" name="cost" placeholder="Cost" required>
-        
+        <textarea name="description" placeholder="Description"></textarea>
+        <select name="effect_types">
+            <option value="none">None</option>
+            <option value="passive">Passive</option>
+            <option value="active">Active</option>
+            <option value="passive_active">Passive / Active</option>
+        </select>
+
         <h3>Stats</h3>
         <div id="stat-container">
             <div class="stat-row">
