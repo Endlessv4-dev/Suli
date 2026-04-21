@@ -24,6 +24,13 @@ body {
     margin-top: 10px;
     font-size: 18px;
 }
+.item-container audio{
+
+    height: 30px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
 .guess-form{
     margin-top: 20px;
@@ -53,4 +60,8 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+.guess-form button:hover{
+    background-color: darkgreen;
+}
+
 
