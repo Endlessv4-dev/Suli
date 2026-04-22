@@ -8,13 +8,11 @@ body{
     background-color: #fff;
 }
 
-.descript{
+.descript span{
     max-width: 200px;
     margin: 20px auto;
     padding: 0;
     text-align: center;
-}
-
-.descript .tier{
-    padding: 5px;
+    border: 1px solid darkgreen;
+    border-radius: 10px;
 }
