@@ -1,3 +1,7 @@
+:root{
+    --igeny: random(1, 4);
+}
+
 *{
     font-family: Arial, sans-serif;
     margin: 0;
@@ -19,6 +23,13 @@ body {
     width: 125px;
     height: auto;
     border-radius: 10px;
+    
+}
+.item-container1{
+    filter: blur(10px);
+}
+.item-container2{
+    filter: blur(5px);
 }
 .item-container h2{
     margin-top: 10px;
