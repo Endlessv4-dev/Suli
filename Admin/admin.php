@@ -28,7 +28,7 @@
         if (move_uploaded_file($tmp_icon_file, $path_icon)) {
             $audio_db_value = "-";
 
-            if (!empty($audio_file) && $_FILE['upload-audio']['error' === UPLOAD_ERR_OK]) {
+            if (!empty($audio_file) && $_FILES['upload-audio']['error' === UPLOAD_ERR_OK]) {
                 $path_audio = $folder."\\".$audio_file;
                 if (move_uploaded_file($tmp_audio_file, $path_audio)) {
                     $audio_db_value = $audio_file;
@@ -52,7 +52,7 @@
 
             for ($i = 0; $i < count($names); $i++) {
                 if (!empty($names[$i]) && !empty($values[$i]) && !empty($types[$i])) {
-                    $conn->query("INSERT INTO item_stats VALUES ($item[id], '$names[$i]', $values[$i], '$types[$i]')");
+                    $conn->query("INSERT INTO item_stats VALUES($item[id], '$names[$i]', $values[$i], '$types[$i]')");
                 }
             }
         }
