@@ -10,7 +10,7 @@ body{
 
 .descript span{
     max-width: 200px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 0;
     text-align: center;
     border: 1px solid darkgreen;
