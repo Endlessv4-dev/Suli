@@ -7,11 +7,14 @@
     $inquiry = "SELECT * FROM items ORDER BY RAND()";
     $f_item = $conn->query($inquiry);
     $item = $f_item->fetch_assoc();
-    echo $item['name'];?>
+    
+    ?>
 <br><br>
 <?php
+    $type = "";
     $inquiry = "SELECT * FROM item_stats WHERE item_id = $item[id]";
     $f_stats = $conn->query($inquiry);
+    echo '<div class="descript">';
     while($stats = $f_stats->fetch_assoc()){
         if ($stats['type'] == "flat"){
             $type = "";
@@ -19,8 +22,17 @@
         else if ($stats['type'] == "%"){
             $type = "%";
         }
+
         echo $stats['stat_value']." ".$type." ".$stats['stat_name']."<br>";
     }
+    echo "</div>";
     
 
 ?>
+
+<div class="descript">
+    <form method="post" class='desc-form'>
+        <input type="text" name="guess" placeholder="Start Typing...">
+        <button type="button" name="guess-btn" onclick="this.form.submit()">Submit</button>
+    </form>
+</div>

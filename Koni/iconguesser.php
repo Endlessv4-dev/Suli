@@ -15,22 +15,22 @@
         echo "<img id='item-image' src='../Items/$item[name]/$item[icon]'> <br>";
         echo "<style>.item-container img {filter: grayscale(100%) blur(10px); transform: rotate(90deg);}</style>";
         if(isset($_POST['submit-btn'])) {
-                if($item['name'] == $_POST['guess']) {
+            if($item['name'] == $_POST['guess']) {
                 echo "<h2>Correct!</h2>";
                 echo "<style>.item-container img {filter: blur(0px); transform: rotate(0deg);}</style>";
-            }else if ($counter > 4) {
+            }else if ($counter == 4) {
                 echo "<h2>Wrong!</h2>";
                 echo "<style>.item-container img {filter: blur(10px); transform: rotate(90deg);}</style>";
-            }else if ($counter > 3) {
+            }else if ($counter == 3) {
                 echo "<h2>Wrong!</h2>";
                 echo "<style>.item-container img {filter: blur(8px); transform: rotate(90deg);}</style>";
-            }else if ($counter > 2) {
+            }else if ($counter == 2) {
                 echo "<h2>Wrong!</h2>";
                 echo "<style>.item-container img {filter: blur(6px); transform: rotate(90deg);}</style>";
-            }else if ($counter > 1) {
+            }else if ($counter == 1) {
                 echo "<h2>Wrong!</h2>";
                 echo "<style>.item-container img {filter: blur(4px); transform: rotate(90deg);}</style>";
-            }else if ($counter > 0) {
+            }else if ($counter == 0) {
                 echo "<h2>Wrong!</h2>";
                 echo "<style>.item-container img {filter: blur(2px); transform: rotate(90deg);}</style>";
             }else {
@@ -53,7 +53,7 @@
 <body>
     <form method = "post" class = "guess-form">
         <input type="text" name = "guess" placeholder="Guess the item name" class = "guess-input" >
-        <button type="button" onclick = "submitGuess()" id = 'submit-btn' class = "submit-btn">Submit Guess</button>
+        <button type="button" onclick = "this.form.submit()" id = 'submit-btn' class = "submit-btn">Submit Guess</button>
     </form>
 </body>
 </html>

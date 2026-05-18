@@ -21,6 +21,7 @@ body{
     width: 100%;
     border: 2px solid gold;
     background: lightblue;
+    margin-bottom: 5px;
 }
 
 .desc-form button{
