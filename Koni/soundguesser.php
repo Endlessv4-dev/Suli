@@ -14,11 +14,11 @@ echo "<div class='item-container'>";
         if(!empty($item['audio'])) {
             echo "<br><audio controls><source src='../Items/$item[name]/$item[audio]' type='audio/mpeg'>Your browser does not support the audio element.</audio> ";
             if(isset($_POST['guess'])) {
-                 if(strtolower($_POST['guess']) == strtolower($item['name'])) {
-                 echo "<h2>Correct!</h2>";
+                if(strtolower($_POST['guess']) == strtolower($item['name'])) {
+                    echo "<h2>Correct!</h2>";
                 }
                 else {
-                echo "<h2>Wrong! The correct answer was: " . $item['name'] . "</h2>";
+                    echo "<h2>Wrong! The correct answer was: " . $item['name'] . "</h2>";
                 }
             }
         }
