@@ -25,9 +25,16 @@
 
         echo $stats['stat_value']." ".$type." ".$stats['stat_name']."<br>";
     }
-    echo "</div>";
     
-
+    if(isset($_POST['guess'])){
+        if($_POST['guess'] == $item['name']){
+            echo "Correct!";
+        }
+        else{
+            echo "Incorrect!";
+        }
+    }
+    echo "</div>";
 ?>
 
 <div class="descript">

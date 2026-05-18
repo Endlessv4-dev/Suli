@@ -9,7 +9,7 @@
     $found_items = $conn->query($inquiry);
     $item = $found_items->fetch_assoc();
     echo "<div class='descript'>";
-    echo "  <br>".$item['tier']."<br>".$item['description']."<br><br>";
+    echo "  <br>".$item['tier']."<br><br>".$item['description']."<br><br>";
     if(isset($_POST['guess'])){
         if($_POST['guess'] == $item['name']){
             echo "Correct!<br> The item was Heartsteel";
