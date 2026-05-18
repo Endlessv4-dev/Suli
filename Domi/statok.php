@@ -25,19 +25,19 @@
 
         echo $stats['stat_value']." ".$type." ".$stats['stat_name']."<br>";
     }
-    
+    echo "</div>";
+
+    echo "<div class='descript'>";
     if(isset($_POST['guess'])){
-        if($_POST['guess'] == $item['name']){
-            echo "Correct!";
+        if(strtolower($_POST['guess']) == strtolower($item['name'])){
+            echo "Correct! The Item was $item[name]";
         }
         else{
             echo "Incorrect!";
         }
     }
-    echo "</div>";
 ?>
 
-<div class="descript">
     <form method="post" class='desc-form'>
         <input type="text" name="guess" placeholder="Start Typing...">
         <button type="button" name="guess-btn" onclick="this.form.submit()">Submit</button>
