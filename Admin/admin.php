@@ -52,7 +52,7 @@
 
             for ($i = 0; $i < count($names); $i++) {
                 if (!empty($names[$i]) && !empty($values[$i]) && !empty($types[$i])) {
-                    $conn->query("INSERT INTO item_stats VALUES ($item[id], '$names[$i]', $values[$i], '$types[$i]')");
+                    $conn->query("INSERT INTO item_stats VALUES($item[id], '$names[$i]', $values[$i], '$types[$i]')");
                 }
             }
         }
