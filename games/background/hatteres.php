@@ -172,7 +172,7 @@
                 ?>
                     <tr>
                         <td style="background-color: #1f2937;">
-                            <img class="item-icon" src="../../Items/<?= $g_item['name']; ?>/<?= $g_item['icon']; ?>" alt="Icon">
+                            <img class="icon-img" src="../../Items/<?= $g_item['name']; ?>/<?= $g_item['icon']; ?>" alt="Icon">
                         </td>
                         <td style="background-color: #1f2937;"><?= $g_item['name']; ?></td>
                         
