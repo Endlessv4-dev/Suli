@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="css/style.css">
 <?php
 
-    require "../Connection/config.php";
-    require "../Functions/message.php";
+    require "../../Connection/config.php";
+    require "../../Functions/message.php";
 
     $inquiry = "SELECT * FROM items ORDER BY RAND()";
     $f_item = $conn->query($inquiry);
@@ -23,7 +23,7 @@
             $type = "%";
         }
 
-        echo $stats['stat_value']." ".$type." ".$stats['stat_name']."<br>";
+        echo $stats['stat_value']." ".$type." ".ucwords(str_replace('_',' ',$stats['stat_name']))."<br>";
     }
     echo "</div>";
 
