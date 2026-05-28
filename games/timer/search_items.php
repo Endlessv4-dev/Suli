@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../css/style.css">
 <?php
 session_start();
 require "../../Connection/config.php";
@@ -17,7 +18,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         <form method="POST" action="">
             <input type="hidden" name="guessed_item_id" value="<?= $item['id']; ?>">
             <button type="submit" name="guess-btn" class="dropdown-item">
-                <img src="../Items/<?= $item['name']; ?>/<?= $item['icon']; ?>" alt="Icon">
+                <img src="../../Items/<?= $item['name']; ?>/<?= $item['icon']; ?>" alt="Icon">
                 <span><?= htmlspecialchars($item['name']); ?></span>
             </button>
         </form>

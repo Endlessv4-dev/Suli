@@ -62,12 +62,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
 <div class="container">
     <h2>Guess Today's League of Legends Item!</h2>
+    
+    <div class="guess-counter" style="font-size: 18px; margin-bottom: 20px; color: #9ca3af;">
+        Number of guesses: <strong style="color: #f59e0b;"><?= count($_SESSION['guesses']); ?></strong>
+    </div>
     
     <?php if ($game_won) { ?>
         <div class="win-box">
@@ -172,7 +176,7 @@
                 ?>
                     <tr>
                         <td style="background-color: #1f2937;">
-                            <img class="item-icon" src="../../Items/<?= $g_item['name']; ?>/<?= $g_item['icon']; ?>" alt="Icon">
+                            <img class="icon-img" src="../../Items/<?= $g_item['name']; ?>/<?= $g_item['icon']; ?>" alt="Icon">
                         </td>
                         <td style="background-color: #1f2937;"><?= $g_item['name']; ?></td>
                         
