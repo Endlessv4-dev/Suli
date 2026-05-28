@@ -19,6 +19,7 @@
     if($counter == 0) {
         $counter == 5;
     }
+    $game_won = false;
     echo "<div class='item-container'>";
         echo "<h1>Guess this item!</h1>";
         echo "<img class = 'icon-img' draggable = 'false' id='item-image' src='../../Items/$item[name]/$item[icon]'> <br>";
@@ -27,6 +28,7 @@
                 if(strtolower($item['name']) == strtolower($_POST['guess'])) {
                 echo "<h2>Correct!</h2>";
                 echo "<style>.item-container img {filter: grayscale(0%) blur(0px); transform: rotate(0deg);}</style>";
+                $game_won = true;
             }else if ($counter == 4) {
                 echo "<h2>Wrong!</h2>";
                 echo "<style>.item-container img {filter:grayscale(75%) blur(10px); transform: rotate(90deg);}</style>";
@@ -61,10 +63,19 @@
     <title>Icon guesser</title>
 </head>
 <body>
-    <form method = "post" class = "guess-form">
-        <input type="text" name = "guess" placeholder="Guess the item name" class = "search-input" >
-        <button type="submit" name = "submit-btn" id = 'submit-btn' class = "submit-btn">Submit Guess</button>
-    </form>
+    <?php if (!$game_won){?>
+    <div class="search-wrapper">
+        <form method = "post" class = "guess-form">
+            <input type="text" name = "guess" placeholder="Guess the item name" class = "search-input" >
+            <button type="submit" name = "submit-btn" id = 'submit-btn' class = "submit-btn">Submit Guess</button>
+        </form>
+    </div>
+
+    <?php } else { ?>
+        <form method="post">
+            <button type="submit" name="play-again-btn" class="submit-btn">Play Again</button>
+        </form>
+    <?php } ?>
 </body>
 </html>
 
