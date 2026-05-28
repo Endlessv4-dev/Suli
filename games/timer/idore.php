@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    require "../Connection/config.php";
+    require "../../Connection/config.php";
 
     // Handle game reset / Restart after Game Over
     if (isset($_POST['reset-btn'])) {
