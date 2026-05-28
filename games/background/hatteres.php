@@ -62,7 +62,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 
@@ -176,7 +176,7 @@
                 ?>
                     <tr>
                         <td style="background-color: #1f2937;">
-                            <img class="item-icon" src="../../Items/<?= $g_item['name']; ?>/<?= $g_item['icon']; ?>" alt="Icon">
+                            <img class="icon-img" src="../../Items/<?= $g_item['name']; ?>/<?= $g_item['icon']; ?>" alt="Icon">
                         </td>
                         <td style="background-color: #1f2937;"><?= $g_item['name']; ?></td>
                         
