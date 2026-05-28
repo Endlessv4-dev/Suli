@@ -62,7 +62,7 @@
 </head>
 <body>
     <form method = "post" class = "guess-form">
-        <input type="text" name = "guess" placeholder="Guess the item name" class = "guess-input" >
+        <input type="text" name = "guess" placeholder="Guess the item name" class = "search-input" >
         <button type="submit" name = "submit-btn" id = 'submit-btn' class = "submit-btn">Submit Guess</button>
     </form>
 </body>
