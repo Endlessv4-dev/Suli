@@ -1,0 +1,32 @@
+*{
+    font-family: arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #fff;
+}
+
+.descript{
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid darkgreen;
+    border-radius: 10px;
+}
+
+.desc-form input[type=text]{
+    border-radius: 5px;
+    width: 100%;
+    border: 2px solid gold;
+    background: lightblue;
+    margin-bottom: 5px;
+}
+
+.desc-form button{
+    border-radius: 5px;
+    width: 100%;
+    border: 2px solid gold;
+    background: lightblue;
+}

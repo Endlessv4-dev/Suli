@@ -3,6 +3,7 @@
 
     require "../Connection/config.php";
 
+    // Handle game reset / Restart after Game Over
     if (isset($_POST['reset-btn'])) {
         unset($_SESSION['icon_target_id']);
         unset($_SESSION['icon_game_status']);
@@ -10,10 +11,11 @@
         unset($_SESSION['icon_guessed_pool']);
         unset($_SESSION['gameover_reason']);
         unset($_SESSION['last_wrong_guess']);
-        header("Location: idore.php");
+        header("Location: " . $_SERVER['PHP_SELF']);
         exit();
     }
 
+    // Initialize game states if missing
     if (!isset($_SESSION['icon_streak'])) {
         $_SESSION['icon_streak'] = 0;
     }
@@ -24,6 +26,7 @@
         $_SESSION['icon_game_status'] = 'playing';
     }
 
+    // Pull a new random item under strict pool restrictions
     if ($_SESSION['icon_game_status'] === 'playing' && !isset($_SESSION['icon_target_id'])) {
         $exclude_clause = "";
         if (!empty($_SESSION['icon_guessed_pool'])) {
@@ -33,6 +36,7 @@
 
         $rand_query = $conn->query("SELECT id FROM items $exclude_clause ORDER BY RAND() LIMIT 1");
 
+        // Pool exhaustion safety catch: If all items are guessed, wipe the pool and select fresh
         if (!$rand_query || mysqli_num_rows($rand_query) == 0) {
             $_SESSION['icon_guessed_pool'] = []; 
             $rand_query = $conn->query("SELECT id FROM items ORDER BY RAND() LIMIT 1");
@@ -47,18 +51,22 @@
     $target_id = $_SESSION['icon_target_id'] ?? 0;
     $target_item = $target_id ? $conn->query("SELECT * FROM items WHERE id = $target_id")->fetch_assoc() : null;
 
+    // Process gameplay events
     if ($_SESSION['icon_game_status'] === 'playing' && $target_id) {
         
+        // Event A: Player selected an item from dropdown
         if (isset($_POST['guess-btn']) && !empty($_POST['guessed_item_id'])) {
             $guessed_id = (int)$_POST['guessed_item_id'];
 
             if ($guessed_id == $target_id) {
+                // Correct choice! Update streak, update exclusion pool, move onward instantly
                 $_SESSION['icon_streak']++;
                 $_SESSION['icon_guessed_pool'][] = $target_id;
-                unset($_SESSION['icon_target_id']);
+                unset($_SESSION['icon_target_id']); // Triggers new item pick next cycle
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();
             } else {
+                // Mistake made: Immediately trigger Game Over status
                 $guess_item_query = $conn->query("SELECT name FROM items WHERE id = $guessed_id");
                 $g_item = $guess_item_query->fetch_assoc();
                 
@@ -70,10 +78,11 @@
             }
         }
 
+        // Event B: JavaScript countdown reported clock hit zero
         if (isset($_POST['timeout-trigger'])) {
             $_SESSION['icon_game_status'] = 'gameover';
             $_SESSION['gameover_reason'] = 'timeout';
-            header("Location: idore.php");
+            header("Location: " . $_SERVER['PHP_SELF']);
             exit();
         }
     }
@@ -85,10 +94,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoLdle - Icon Time Attack</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     
     <style>
+        /* Contextual CSS overrides to preserve the exact layout properties but hide icons */
         #dropdown-menu img {
             display: none !important;
         }
@@ -108,7 +119,7 @@
         <div id="countdown-timer" style="font-size: 38px; font-weight: bold; color: #ef4444; margin: 10px 0;">5</div>
 
         <div style="margin-bottom: 25px;">
-            <img src="../Items/<?= $target_item['name']; ?>/<?= $target_item['icon']; ?>" 
+            <img src="../Items/<?= htmlspecialchars($target_item['name']); ?>/<?= htmlspecialchars($target_item['icon']); ?>" 
                  style="width: 115px; height: 115px; border-radius: 8px; border: 3px solid #4b5563; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
         </div>
 
@@ -122,16 +133,16 @@
         <div class="win-box" style="background-color: #991b1b; border-color: #ef4444;">
             <?php if ($_SESSION['gameover_reason'] === 'lost_wrong' || $_SESSION['gameover_reason'] === 'wrong') { ?>
                 <h3>❌ Game Over: Wrong Answer!</h3>
-                <p>You guessed: <strong><?= $_SESSION['last_wrong_guess'] ?? 'Unknown'; ?></strong></p>
+                <p>You guessed: <strong><?= htmlspecialchars($_SESSION['last_wrong_guess'] ?? 'Unknown'); ?></strong></p>
             <?php } else { ?>
                 <h3>⏰ Game Over: Time's Up!</h3>
             <?php } ?>
             
             <p style="margin: 10px 0;">Final Streak Achieved: <strong><?= $_SESSION['icon_streak']; ?></strong> correct guesses!</p>
-            <p style="margin-bottom: 15px;">The correct answer was: <strong><?= $target_item['name'] ?? ''; ?></strong></p>
+            <p style="margin-bottom: 15px;">The correct answer was: <strong><?= htmlspecialchars($target_item['name'] ?? ''); ?></strong></p>
             
             <?php if ($target_item) { ?>
-                <img src="../Items/<?= $target_item['name']; ?>/<?= $target_item['icon']; ?>" style="width: 70px; height: 70px; border-radius: 6px; object-fit: cover; margin-bottom: 15px; border: 2px solid white;">
+                <img src="../Items/<?= htmlspecialchars($target_item['name']); ?>/<?= htmlspecialchars($target_item['icon']); ?>" style="width: 70px; height: 70px; border-radius: 6px; object-fit: cover; margin-bottom: 15px; border: 2px solid white;">
             <?php } ?>
 
             <form method="POST">
@@ -144,6 +155,7 @@
 
 <script>
     <?php if ($game_status === 'playing') { ?>
+        // Strict 5-Second Realtime Clock Engine
         var timeLeft = 5;
         var countdownElement = $('#countdown-timer');
 
@@ -164,7 +176,6 @@
 
     $('#search-input').on('input', function() {
         var value = $(this).val().trim();
-        
         if (value.length >= 1) {
             $('#dropdown-menu').load('search_items.php?keresett=' + value);
             $('#dropdown-menu').show();

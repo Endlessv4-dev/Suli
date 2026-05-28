@@ -1,0 +1,78 @@
+:root{
+    --igeny: random(1, 4);
+}
+
+*{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
+.item-container{
+    max-width: 250px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    
+}
+.item-container img{
+    width: 125px;
+    height: auto;
+    border-radius: 10px;
+    
+}
+.item-container1{
+    filter: blur(10px);
+}
+.item-container2{
+    filter: blur(5px);
+}
+.item-container h2{
+    margin-top: 10px;
+    font-size: 18px;
+}
+.item-container audio{
+
+    height: 30px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.guess-form{
+    margin-top: 20px;
+    margin: 0 auto;
+    height: auto;
+    text-align: center;
+    width: 100%;
+
+}
+
+.guess-form input[type="text"]{
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid grey;
+}
+
+.guess-form button{
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.guess-form button:hover{
+    background-color: darkgreen;
+}
+
+
