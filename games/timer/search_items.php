@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../Connection/config.php";
+require "../../Connection/config.php";
 
 $keresett = isset($_GET['keresett']) ? $_GET['keresett'] : '';
 $guesses = isset($_SESSION['guesses']) ? $_SESSION['guesses'] : [];

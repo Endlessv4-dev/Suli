@@ -2,7 +2,7 @@
 
 <?php
 
-    require '../Connection/config.php';
+    require "../../Connection/config.php";
 
 
 

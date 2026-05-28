@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="css/style.css">
 <?php
 
-    require "../Connection/config.php";
-    require "../Functions/message.php";
+    require "../../Connection/config.php";
+    require "../../Functions/message.php";
 
     $inquiry = "SELECT * FROM items WHERE description != '-' ORDER BY RAND() LIMIT 1";
     $found_items = $conn->query($inquiry);

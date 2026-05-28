@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="css/style.css">
 <?php
 
-    require "../Connection/config.php";
-    require "../Functions/message.php";
+    require "../../Connection/config.php";
+    require "../../Functions/message.php";
 
     $inquiry = "SELECT * FROM items ORDER BY RAND()";
     $f_item = $conn->query($inquiry);
