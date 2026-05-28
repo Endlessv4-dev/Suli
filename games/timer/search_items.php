@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../css/style.css">
 <?php
 session_start();
 require "../../Connection/config.php";

@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="css/style.css">
-<script src="js/script.js"></script>
+<link rel="stylesheet" href="../../css/style.css">
 <?php
 
     require "../../Connection/config.php";
@@ -22,7 +21,7 @@
     }
     echo "<div class='item-container'>";
         echo "<h1>Guess the item!</h1>";
-        echo "<img id='item-image' src='../Items/$item[name]/$item[icon]'> <br>";
+        echo "<img class = 'icon-img' id='item-image' src='../../Items/$item[name]/$item[icon]'> <br>";
         echo "<style>.item-container img {filter: grayscale(100%) blur(10px); transform: rotate(random(0deg, 360deg by 90deg));}</style>";
         if(isset($_POST['submit-btn'])) {
                 if(strtolower($item['name']) == strtolower($_POST['guess'])) {
