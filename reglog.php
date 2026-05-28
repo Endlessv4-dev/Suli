@@ -8,7 +8,17 @@
         $result = $conn->query($stmt);
 
         if (mysqli_num_rows($result) == 0) {
-            
+            if ($_POST['pass1'] === $_POST['pass2']) {
+                $hash = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
+
+                $conn->query("INSERT INTO users VALUES (id, '$_POST[username]', '$hash', 0)");
+                
+
+                $conn->query("INSERT INTO profile VALUES (id, '$_POST[username]', '$hash', 0)");
+            }
+            else {
+                Error("Passwords don't match.");
+            }
         }
         else {
             Error("This username is already used.");
