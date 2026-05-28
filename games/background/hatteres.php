@@ -69,6 +69,10 @@
 <div class="container">
     <h2>Guess Today's League of Legends Item!</h2>
     
+    <div class="guess-counter" style="font-size: 18px; margin-bottom: 20px; color: #9ca3af;">
+        Number of guesses: <strong style="color: #f59e0b;"><?= count($_SESSION['guesses']); ?></strong>
+    </div>
+    
     <?php if ($game_won) { ?>
         <div class="win-box">
             <h3>🎉 GG! You guessed the correct item: <?= htmlspecialchars($target_item['name']); ?>!</h3>
