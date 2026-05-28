@@ -2,8 +2,6 @@
     session_start();
 
     require "../../Connection/config.php";
-
-    // Handle game reset / Restart after Game Over
     if (isset($_POST['reset-btn'])) {
         unset($_SESSION['icon_target_id']);
         unset($_SESSION['icon_game_status']);
@@ -11,11 +9,10 @@
         unset($_SESSION['icon_guessed_pool']);
         unset($_SESSION['gameover_reason']);
         unset($_SESSION['last_wrong_guess']);
-        header("Location: " . $_SERVER['PHP_SELF']);
+        header("Location: idore.php");
         exit();
     }
 
-    // Initialize game states if missing
     if (!isset($_SESSION['icon_streak'])) {
         $_SESSION['icon_streak'] = 0;
     }
@@ -26,7 +23,6 @@
         $_SESSION['icon_game_status'] = 'playing';
     }
 
-    // Pull a new random item under strict pool restrictions
     if ($_SESSION['icon_game_status'] === 'playing' && !isset($_SESSION['icon_target_id'])) {
         $exclude_clause = "";
         if (!empty($_SESSION['icon_guessed_pool'])) {
@@ -36,7 +32,6 @@
 
         $rand_query = $conn->query("SELECT id FROM items $exclude_clause ORDER BY RAND() LIMIT 1");
 
-        // Pool exhaustion safety catch: If all items are guessed, wipe the pool and select fresh
         if (!$rand_query || mysqli_num_rows($rand_query) == 0) {
             $_SESSION['icon_guessed_pool'] = []; 
             $rand_query = $conn->query("SELECT id FROM items ORDER BY RAND() LIMIT 1");
@@ -51,22 +46,18 @@
     $target_id = $_SESSION['icon_target_id'] ?? 0;
     $target_item = $target_id ? $conn->query("SELECT * FROM items WHERE id = $target_id")->fetch_assoc() : null;
 
-    // Process gameplay events
     if ($_SESSION['icon_game_status'] === 'playing' && $target_id) {
         
-        // Event A: Player selected an item from dropdown
         if (isset($_POST['guess-btn']) && !empty($_POST['guessed_item_id'])) {
             $guessed_id = (int)$_POST['guessed_item_id'];
 
             if ($guessed_id == $target_id) {
-                // Correct choice! Update streak, update exclusion pool, move onward instantly
                 $_SESSION['icon_streak']++;
                 $_SESSION['icon_guessed_pool'][] = $target_id;
-                unset($_SESSION['icon_target_id']); // Triggers new item pick next cycle
+                unset($_SESSION['icon_target_id']);
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();
             } else {
-                // Mistake made: Immediately trigger Game Over status
                 $guess_item_query = $conn->query("SELECT name FROM items WHERE id = $guessed_id");
                 $g_item = $guess_item_query->fetch_assoc();
                 
@@ -78,7 +69,6 @@
             }
         }
 
-        // Event B: JavaScript countdown reported clock hit zero
         if (isset($_POST['timeout-trigger'])) {
             $_SESSION['icon_game_status'] = 'gameover';
             $_SESSION['gameover_reason'] = 'timeout';
@@ -99,7 +89,6 @@
     <link rel="stylesheet" href="css/styles.css">
     
     <style>
-        /* Contextual CSS overrides to preserve the exact layout properties but hide icons */
         #dropdown-menu img {
             display: none !important;
         }
@@ -155,7 +144,6 @@
 
 <script>
     <?php if ($game_status === 'playing') { ?>
-        // Strict 5-Second Realtime Clock Engine
         var timeLeft = 5;
         var countdownElement = $('#countdown-timer');
 
