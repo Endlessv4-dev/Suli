@@ -20,8 +20,8 @@
         $counter == 5;
     }
     echo "<div class='item-container'>";
-        echo "<h1>Guess the item!</h1>";
-        echo "<img class = 'icon-img' id='item-image' src='../../Items/$item[name]/$item[icon]'> <br>";
+        echo "<h1>Guess this item!</h1>";
+        echo "<img class = 'icon-img' draggable = 'false' id='item-image' src='../../Items/$item[name]/$item[icon]'> <br>";
         echo "<style>.item-container img {filter: grayscale(100%) blur(10px); transform: rotate(random(0deg, 360deg by 90deg));}</style>";
         if(isset($_POST['submit-btn'])) {
                 if(strtolower($item['name']) == strtolower($_POST['guess'])) {
