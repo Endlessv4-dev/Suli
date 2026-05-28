@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
-<br>
 <link rel="stylesheet" href="../../css/style.css">
->>>>>>> 7e5e77947916b46449bf0523209c8cfb1989f5ba
 <?php
     require "../../Connection/config.php";
     require "../../Functions/message.php";
