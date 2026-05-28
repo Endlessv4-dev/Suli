@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../css/style.css">
+
 <?php
 
     require "../../Connection/config.php";
@@ -58,6 +58,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Icon guesser</title>
@@ -66,10 +69,11 @@
     <?php if (!$game_won){?>
     <div class="search-wrapper">
         <form method = "post" class = "guess-form">
-            <input type="text" name = "guess" placeholder="Guess the item name" class = "search-input" >
+            <input type="text" id = 'guess' name = "guess" placeholder="Guess the item name" class = "search-input" >
             <button type="submit" name = "submit-btn" id = 'submit-btn' class = "submit-btn">Submit Guess</button>
         </form>
     </div>
+    <div class="search"></div>
 
     <?php } else { ?>
         <form method="post">
@@ -79,4 +83,12 @@
 </body>
 </html>
 
+<script>
 
+document.getElementById('guess').addEventListener('keyup', (e) => {
+    var ertek = e.target.value;
+    
+    $('#search').load('../../Functions/search_items.php?keresett=' + ertek);
+
+});
+</script>
