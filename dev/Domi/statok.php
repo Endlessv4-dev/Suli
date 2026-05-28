@@ -23,7 +23,7 @@
             $type = "%";
         }
 
-        echo $stats['stat_value']." ".$type." ".ucwords(str_replace('_',' ',$stats['stat_name']))."<br>";
+        echo $stats['stat_value']." ".$type." ".ucwords(str_replace('_', ' ', $stats['stat_name']))."<br>";
     }
     echo "</div>";
 
