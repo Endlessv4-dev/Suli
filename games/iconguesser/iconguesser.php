@@ -2,7 +2,7 @@
 <script src="js/script.js"></script>
 <?php
 
-    require '../Connection/config.php';
+    require "../../Connection/config.php";
 
     session_start();
 
