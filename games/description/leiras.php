@@ -32,9 +32,9 @@
     $personal_best = 0;
     if (isset($_COOKIE['userid'])) {
         $uid = (int)$_COOKIE['userid'];
-        $pb_query = $conn->query("SELECT leiras_best FROM profile WHERE id = $uid");
+        $pb_query = $conn->query("SELECT desc_least_guess_win FROM profile WHERE userid = $uid");
         if ($pb_query && mysqli_num_rows($pb_query) > 0) {
-            $personal_best = $pb_query->fetch_assoc()['leiras_best'];
+            $personal_best = $pb_query->fetch_assoc()['desc_least_guess_win'];
         }
     }
 
@@ -74,7 +74,7 @@
                     $uid = (int)$_COOKIE['userid'];
                     $current_streak = $_SESSION['leiras_streak'];
                     if ($current_streak > $personal_best) {
-                        $conn->query("UPDATE profile SET leiras_best = $current_streak WHERE id = $uid");
+                        $conn->query("UPDATE profile SET desc_least_guess_win = $current_streak WHERE id = $uid");
                         $personal_best = $current_streak;
                     }
                 }
