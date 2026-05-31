@@ -1,28 +1,7 @@
 <?php
     require "../../Connection/config.php";
-    session_start();
+    require "../../Functions/nav.php";
 
-    if (!isset($_SESSION['sound_streak'])) {
-        $_SESSION['sound_streak'] = 0;
-    }
-
-    if (isset($_POST['play-again-btn'])) {
-        unset($_SESSION['sound_target_id']);
-        header("Location: soundguesser.php");
-        exit();
-    }
-
-    if (!isset($_SESSION['sound_target_id'])) {
-        $lekerdezes = "SELECT * FROM items WHERE audio IS NOT NULL AND audio != '' ORDER BY RAND() LIMIT 1";
-        $talalt_sor = $conn->query($lekerdezes);
-        if ($talalt_sor && mysqli_num_rows($talalt_sor) > 0) {
-            $item = $talalt_sor->fetch_assoc();
-            $_SESSION['sound_target_id'] = $item['id'];
-        }
-    }
-
-    $target_id = $_SESSION['sound_target_id'] ?? 0;
-    $item = $conn->query("SELECT * FROM items WHERE id = $target_id")->fetch_assoc();
 
     $game_won = false;
 
@@ -63,6 +42,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/nav.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>

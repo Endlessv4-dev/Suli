@@ -1,5 +1,7 @@
 <?php
     require "../../Connection/config.php";
+    require "../../Functions/nav.php";
+
     session_start();
 
     if (!isset($_SESSION['icon_guesser_streak'])) {
@@ -92,6 +94,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/nav.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -1,5 +1,7 @@
 :root{
     --darkblue: "#00008b";
+    --gold: "#ffd700";
+    --red: "#ff0000";
 }
 
 *{
@@ -9,7 +11,6 @@
 
 body {
     background-color: #111827;
-    color: #ffffff;
     font-family: Arial, sans-serif;
     padding: 0;
     margin: 0;
@@ -17,7 +18,6 @@ body {
 
 nav{
     overflow: hidden;
-    background-color: blueviolet;
     margin-bottom: 10px;
     display: inline-block;
     /* width: 100%; */
@@ -33,11 +33,12 @@ nav li{
     float: left;
 }
 
+
 .nav-item{
     float: left;
     padding: 10px;
     overflow: hidden;
-    color: black;
+    color: var(--gold);
     text-decoration: none;
 }
 
@@ -45,6 +46,6 @@ nav li{
     float: right;
     padding: 10px;
     overflow: hidden;
-    color: black;
+    color: var(--red);
     text-decoration: none;
 }

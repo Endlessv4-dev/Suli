@@ -2,6 +2,7 @@
     session_start();
 
     require "../../Connection/config.php";
+    require "../../Functions/nav.php";
     if (isset($_POST['reset-btn'])) {
         unset($_SESSION['icon_target_id']);
         unset($_SESSION['icon_game_status']);
@@ -99,6 +100,7 @@
     <title>LoLdle - Icon Time Attack</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../css/style.css">
+    
     <style>
         #dropdown-menu img {
             display: none !important;

@@ -3,6 +3,7 @@
     session_start();
     require "../../Connection/config.php";
     require "../../Functions/message.php";
+    require "../../Functions/nav.php";
 
     if (!isset($_SESSION['stats_streak'])) {
         $_SESSION['stats_streak'] = 0;
@@ -71,6 +72,7 @@
     echo "<br>Current Streak: " . $_SESSION['stats_streak'] . " 🔥";
     echo "</div>";
 ?>
+<link rel="stylesheet" href="../../css/nav.css">
 
     <?php if (!$game_won && !isset($_POST['guess'])) { ?>
     <form method="post" class='desc-form'>
