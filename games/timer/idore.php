@@ -2,7 +2,7 @@
     session_start();
 
     require "../../Connection/config.php";
-    require "../../Functions/nav.php";
+
     if (isset($_POST['reset-btn'])) {
         unset($_SESSION['icon_target_id']);
         unset($_SESSION['icon_game_status']);
@@ -47,6 +47,16 @@
     $target_id = $_SESSION['icon_target_id'] ?? 0;
     $target_item = $target_id ? $conn->query("SELECT * FROM items WHERE id = $target_id")->fetch_assoc() : null;
 
+    $personal_best = 0;
+    if (isset($_COOKIE['userid'])) {
+        $uid = (int)$_COOKIE['userid'];
+        $pb_query = $conn->query("SELECT timer_most_streak FROM profile WHERE userid = $uid");
+        if ($pb_query && mysqli_num_rows($pb_query) > 0) {
+            $pb_row = $pb_query->fetch_assoc();
+            $personal_best = (int)$pb_row['timer_most_streak'];
+        }
+    }
+
     if ($_SESSION['icon_game_status'] === 'playing' && $target_id) {
         if (isset($_POST['guess-btn']) && !empty($_POST['guessed_item_id'])) {
             $guessed_id = (int)$_POST['guessed_item_id'];
@@ -56,19 +66,15 @@
                 $_SESSION['icon_guessed_pool'][] = $target_id;
                 
                 if (isset($_COOKIE['userid'])) {
-                    $uid = (int)$_COOKIE['userid'];
                     $current_streak = $_SESSION['icon_streak'];
-                    $pb_query = $conn->query("SELECT idore_streak FROM profile WHERE id = $uid");
-                    if ($pb_query && mysqli_num_rows($pb_query) > 0) {
-                        $pb_row = $pb_query->fetch_assoc();
-                        if ($current_streak > $pb_row['idore_streak']) {
-                            $conn->query("UPDATE profile SET idore_streak = $current_streak WHERE id = $uid");
-                        }
+                    if ($current_streak > $personal_best) {
+                        $conn->query("UPDATE profile SET timer_most_streak = $current_streak WHERE userid = $uid");
+                        $personal_best = $current_streak;
                     }
                 }
                 
                 unset($_SESSION['icon_target_id']);
-                header("Location: " . $_SERVER['PHP_SELF']);
+                header("Location: idore.php");
                 exit();
             } else {
                 $guess_item_query = $conn->query("SELECT name FROM items WHERE id = $guessed_id");
@@ -77,7 +83,16 @@
                 $_SESSION['icon_game_status'] = 'gameover';
                 $_SESSION['gameover_reason'] = 'wrong';
                 $_SESSION['last_wrong_guess'] = $g_item['name'] ?? 'Unknown Item';
-                header("Location: " . $_SERVER['PHP_SELF']);
+
+                if (isset($_COOKIE['userid'])) {
+                    $current_streak = $_SESSION['icon_streak'];
+                    if ($current_streak > $personal_best) {
+                        $conn->query("UPDATE profile SET timer_most_streak = $current_streak WHERE userid = $uid");
+                        $personal_best = $current_streak;
+                    }
+                }
+
+                header("Location: idore.php");
                 exit();
             }
         }
@@ -85,7 +100,16 @@
         if (isset($_POST['timeout-trigger'])) {
             $_SESSION['icon_game_status'] = 'gameover';
             $_SESSION['gameover_reason'] = 'timeout';
-            header("Location: " . $_SERVER['PHP_SELF']);
+
+            if (isset($_COOKIE['userid'])) {
+                $current_streak = $_SESSION['icon_streak'];
+                if ($current_streak > $personal_best) {
+                    $conn->query("UPDATE profile SET timer_most_streak = $current_streak WHERE userid = $uid");
+                    $personal_best = $current_streak;
+                }
+            }
+
+            header("Location: idore.php");
             exit();
         }
     }
@@ -97,40 +121,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoLdle - Icon Time Attack</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../css/style.css">
-    
-    <style>
-        #dropdown-menu img {
-            display: none !important;
-        }
-    </style>
+    <title>LoLdle - Icon Time Attack</title>
 </head>
 <body>
-
+<?php require "../../Functions/nav.php"; ?>
 <div class="container">
-    <h2>Guess the Item in 5 Seconds!</h2>
+    <h2>Guess Today's League of Legends Item!</h2>
     
-    <div style="font-size: 22px; font-weight: bold; margin-bottom: 15px; color: #34d399;">
-        Current Streak: <?= $_SESSION['icon_streak']; ?> 🔥
+    <div class="item-container">
+        <?php if ($game_status === 'playing' && $target_item) { ?>
+            <div id="countdown-timer" style="font-size: 38px; font-weight: bold; color: #ef4444; margin: 10px 0;">5</div>
+            <img class="icon-img" draggable="false" id="item-image" src="../../Items/<?= htmlspecialchars($target_item['name']); ?>/<?= htmlspecialchars($target_item['icon']); ?>" style="width: 115px; height: 115px; border-radius: 8px; border: 3px solid #4b5563; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+        <?php } else if ($target_item) { ?>
+            <img class="icon-img" draggable="false" id="item-image" src="../../Items/<?= htmlspecialchars($target_item['name']); ?>/<?= htmlspecialchars($target_item['icon']); ?>" style="width: 115px; height: 115px; border-radius: 8px; border: 3px solid #4b5563; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+        <?php } ?>
+        <br>Current Streak: <?= $_SESSION['icon_streak']; ?> 🔥
     </div>
-    
-    <?php if ($game_status === 'playing' && $target_item) { ?>
-        <div id="countdown-timer" style="font-size: 38px; font-weight: bold; color: #ef4444; margin: 10px 0;">5</div>
 
-        <div style="margin-bottom: 25px;">
-            <img src="../Items/<?= htmlspecialchars($target_item['name']); ?>/<?= htmlspecialchars($target_item['icon']); ?>" 
-                 style="width: 115px; height: 115px; border-radius: 8px; border: 3px solid #4b5563; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
-        </div>
-
-        <div class="search-wrapper" id="search-wrapper">
-            <input type="text" id="search-input" class="search-input" placeholder="Type item name..." autocomplete="off" autofocus>
-            <div id="dropdown-menu" class="dropdown-menu"></div>
-        </div>
+    <?php if (isset($_COOKIE['userid'])) { ?>
+        <div class="pb-display">Your Best Streak: <?= $personal_best; ?> 🔥</div>
     <?php } else { ?>
-        <div class="win-box" style="background-color: #991b1b; border-color: #ef4444;">
-            <?php if ($_SESSION['gameover_reason'] === 'lost_wrong' || $_SESSION['gameover_reason'] === 'wrong') { ?>
+        <div class="pb-display" style="color: #6b7280;">Log in to save your best score!</div>
+    <?php } ?>
+    
+    <?php if ($game_status === 'gameover') { ?>
+        <div class="win-box" style="background-color: #dc2626; border: 2px solid #ef4444;">
+            <?php if ($_SESSION['gameover_reason'] === 'wrong') { ?>
                 <h3>❌ Game Over: Wrong Answer!</h3>
                 <p>You guessed: <strong><?= htmlspecialchars($_SESSION['last_wrong_guess'] ?? 'Unknown'); ?></strong></p>
             <?php } else { ?>
@@ -140,14 +158,13 @@
             <p style="margin: 10px 0;">Final Streak Achieved: <strong><?= $_SESSION['icon_streak']; ?></strong> correct guesses!</p>
             <p style="margin-bottom: 15px;">The correct answer was: <strong><?= htmlspecialchars($target_item['name'] ?? ''); ?></strong></p>
             
-            <?php if ($target_item) { ?>
-                <img src="../Items/<?= htmlspecialchars($target_item['name']); ?>/<?= htmlspecialchars($target_item['icon']); ?>" style="width: 70px; height: 70px; border-radius: 6px; object-fit: cover; margin-bottom: 15px; border: 2px solid white;">
-            <?php } ?>
-
             <form method="POST">
-                <button type="submit" name="reset-btn" style="background-color: #2563eb; margin: 5px 0 0 0;">Try Again</button>
+                <button type="submit" name="reset-btn">Play Again</button>
             </form>
         </div>
+    <?php } else { ?>
+        <input type="text" id="searchbox" placeholder="Click or type item name..." autocomplete="off" autofocus>
+        <div id="names"></div>
     <?php } ?>
 </div>
 
@@ -170,29 +187,10 @@
         }, 1000);
     <?php } ?>
 
-    $('#search-input').on('input', function() {
-        var value = $(this).val().trim();
-        if (value.length >= 1) {
-            $('#dropdown-menu').load('search_items.php?keresett=' + value);
-            $('#dropdown-menu').show();
-        } else {
-            $('#dropdown-menu').hide().empty();
-        }
-    });
-
-    $('#search-input').on('focus', function() {
-        var value = $(this).val().trim();
-        if (value.length >= 1) {
-            $('#dropdown-menu').show();
-        }
-    });
-
-    $(document).click(function(e) {
-        if (!$(e.target).closest('#search-wrapper').length) {
-            $('#dropdown-menu').hide();
-        }
+    document.getElementById('searchbox').addEventListener('keyup', (e) => {
+        var value = e.target.value;
+        $('#names').load("../../Functions/search_items.php?typed=" + encodeURIComponent(value));
     });
 </script>
-
 </body>
 </html>
