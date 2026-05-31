@@ -5,7 +5,7 @@
 
     if (isset($_POST['reset-btn'])) {
         unset($_SESSION['target_id']);
-        unset($_SESSION['guesses']);
+        unset($_SESSION['guess']);
         header("Location: hatteres.php");
         exit();
     }
@@ -15,7 +15,7 @@
         if (mysqli_num_rows($rand_query) > 0) {
             $rand_item = $rand_query->fetch_assoc();
             $_SESSION['target_id'] = $rand_item['id'];
-            $_SESSION['guesses'] = [];
+            $_SESSION['guess'] = [];
         }
     }
     
@@ -28,11 +28,11 @@
         $target_stats[] = $stat['stat_name'];
     }
 
-    if (!isset($_SESSION['guesses'])) {
-        $_SESSION['guesses'] = [];
+    if (!isset($_SESSION['guess'])) {
+        $_SESSION['guess'] = [];
     }
 
-    $game_won = in_array($target_id, $_SESSION['guesses']);
+    $game_won = in_array($target_id, $_SESSION['guess']);
     $error_message = "";
 
     $personal_best = "N/A";
@@ -50,12 +50,12 @@
         
         $check_query = $conn->query("SELECT id FROM items WHERE id = $guessed_id");
         if (mysqli_num_rows($check_query) > 0) {
-            if (!in_array($guessed_id, $_SESSION['guesses'])) {
-                $_SESSION['guesses'][] = $guessed_id;
+            if (!in_array($guessed_id, $_SESSION['guess'])) {
+                $_SESSION['guess'][] = $guessed_id;
                 
                 if ($guessed_id == $target_id) {
                     $game_won = true;
-                    $current_guesses = count($_SESSION['guesses']);
+                    $current_guesses = count($_SESSION['guess']);
                     
                     if (isset($_COOKIE['userid'])) {
                         if ($personal_best === "No wins yet" || $current_guesses < $personal_best) {
@@ -88,7 +88,7 @@
     <h2>Guess Today's League of Legends Item!</h2>
     
     <div style="font-size: 18px; color: #9ca3af; margin-bottom: 5px;">
-        Number of guesses: <strong style="color: #f59e0b;"><?= count($_SESSION['guesses']); ?></strong>
+        Number of guesses: <strong style="color: #f59e0b;"><?= count($_SESSION['guess']); ?></strong>
     </div>
     <?php if(isset($_COOKIE['userid'])){ ?>
         <div class="pb-display">Your Best: <?= $personal_best; ?> guesses</div>
@@ -112,7 +112,7 @@
         <?php } ?>
     <?php } ?>
 
-    <?php if (!empty($_SESSION['guesses'])) { ?>
+    <?php if (!empty($_SESSION['guess'])) { ?>
         <table>
             <thead>
                 <tr>
@@ -126,7 +126,7 @@
             </thead>
             <tbody>
                 <?php
-                $reversed_guesses = array_reverse($_SESSION['guesses']);
+                $reversed_guesses = array_reverse($_SESSION['guess']);
                 foreach ($reversed_guesses as $g_id) {
                     $g_item = $conn->query("SELECT * FROM items WHERE id = $g_id")->fetch_assoc();
                     

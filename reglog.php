@@ -30,6 +30,25 @@
         }
     }
 
+    if (isset($_POST['login-btn'])) {
+        $stmt = "SELECT * FROM users WHERE username = '$_POST[username]'";
+        $result = $conn->query($stmt);
+
+        if (mysqli_num_rows($result) == 1) {
+            $row = $result->fetch_assoc();
+            if (password_verify($_POST['password'], $row['password'])) {
+                setcookie("userid", $row['id'], time() + 3600, "/");
+                header("Location: index.php");
+            }
+            else {
+                Error("Wrong password.");
+            }
+        }
+        else {
+            Error("No user found with this username.");
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>

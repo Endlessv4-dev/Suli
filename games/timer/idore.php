@@ -132,7 +132,7 @@
     
     <div class="item-container">
         <?php if ($game_status === 'playing' && $target_item) { ?>
-            <div id="countdown-timer" style="font-size: 38px; font-weight: bold; color: #ef4444; margin: 10px 0;">5</div>
+            <div id="countdown-timer" style="font-size: 38px; font-weight: bold; color: #ef4444; margin: 10px 0;">10</div>
             <img class="icon-img" draggable="false" id="item-image" src="../../Items/<?= htmlspecialchars($target_item['name']); ?>/<?= htmlspecialchars($target_item['icon']); ?>" style="width: 115px; height: 115px; border-radius: 8px; border: 3px solid #4b5563; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
         <?php } else if ($target_item) { ?>
             <img class="icon-img" draggable="false" id="item-image" src="../../Items/<?= htmlspecialchars($target_item['name']); ?>/<?= htmlspecialchars($target_item['icon']); ?>" style="width: 115px; height: 115px; border-radius: 8px; border: 3px solid #4b5563; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
@@ -170,7 +170,7 @@
 
 <script>
     <?php if ($game_status === 'playing') { ?>
-        var timeLeft = 5;
+        var timeLeft = 10;
         var countdownElement = $('#countdown-timer');
 
         var countdownInterval = setInterval(function() {
