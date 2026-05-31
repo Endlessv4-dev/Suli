@@ -7,7 +7,7 @@
     <title>Leaderboards</title>
 </head>
 <body>
-    
+<?php require "Functions/nav.php"; ?>
 <div class="container">
     <h1 class="home-logo">Leaderboards</h1>
 
