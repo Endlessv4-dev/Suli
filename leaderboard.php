@@ -5,7 +5,7 @@
     $lekerdezes = "SELECT * FROM profile ORDER BY bg_least_guess_win ASC LIMIT 5";
     $talalt_bg = $conn->query($lekerdezes);
 ?>
-<table>
+<table class = "top5">
     <th>Classic Leaderboard</th>
 <?php
     while($bg = $talalt_bg->fetch_assoc()){
@@ -24,7 +24,7 @@
     $lekerdezes = "SELECT * FROM profile ORDER BY timer_most_streak DESC LIMIT 5";
     $talalt_timer = $conn->query($lekerdezes);
 ?>
-<table>
+<table class = "top5">
     <th>Time Attack Leaderboard</th>
 <?php
     while($tr = $talalt_timer->fetch_assoc()){
@@ -43,7 +43,7 @@
     $lekerdezes = "SELECT * FROM profile ORDER BY stats_least_guess_win ASC LIMIT 5";
     $talalt_stats = $conn->query($lekerdezes);
 ?>
-<table>
+<table class = "top5">
     <th>Stats Leaderboard</th>
 <?php
     while($st = $talalt_stats->fetch_assoc()){
@@ -62,7 +62,7 @@
     $lekerdezes = "SELECT * FROM profile ORDER BY sound_least_guess_win ASC LIMIT 5";
     $talalt_sound = $conn->query($lekerdezes);
 ?>
-<table>
+<table class = "top5">
     <th>Sound Leaderboard</th>
 <?php
     while($snd = $talalt_sound->fetch_assoc()){
@@ -81,7 +81,7 @@
     $lekerdezes = "SELECT * FROM profile ORDER BY icon_least_guess_win ASC LIMIT 5";
     $talalt_icon = $conn->query($lekerdezes);
 ?>
-<table>
+<table class = "top5">
     <th>Icon Leaderboard</th>
 <?php
     while($ic = $talalt_icon->fetch_assoc()){
@@ -100,7 +100,7 @@
     $lekerdezes = "SELECT * FROM profile ORDER BY desc_least_guess_win ASC LIMIT 5";
     $talalt_desc = $conn->query($lekerdezes);
 ?>
-<table>
+<table class = "top5">
     <th>Description Leaderboard</th>
 <?php
     while($dc = $talalt_desc->fetch_assoc()){
