@@ -71,7 +71,7 @@
     echo "<div class='item-container'>";
     
     if ($item) {
-        echo "<img class='icon-img' draggable='false' id='item-image' src='../../Items/" . $item['name'] . "/" . $item['icon'] . "'> <br>";
+        echo "<img class='icon-img' draggable='false' id='item-image' src='../../Items/" . htmlspecialchars($item['name']) . "/" . htmlspecialchars($item['icon']) . "'> <br>";
         
         if (isset($_POST['guess-btn'])) {
             if ((int)$_POST['guessed_item_id'] === (int)$item['id']) {
