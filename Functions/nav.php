@@ -9,22 +9,11 @@
         <li><a href="../timer/idore.php" class='nav-item'>Time Attack</a></li>
         <?php if(isset($_COOKIE['userid'])){ ?>
             <li><a class='reglog' href="../../logout.php" style="color: #ff0000;">Logout</a></li>
+            <?php if($_COOKIE['adminid'] == 1){ ?>
+                <li><a class='admin' href="../../Admin/admin.php" style="color: #ff6060;">Admin</a></li>  
+            <?php } ?>
         <?php } else { ?>
             <li><a class='reglog' href="../../reglog.php" style="color: #008000">Login</a></li>
         <?php } ?>
-        <?php
-        
-            // require "../Connection/config.php";
-
-            // $inquiry = "SELECT * FROM users WHERE id=$_COOKIE[id]";
-            // $found = $conn->query($inquiry);
-            // $user = $found->fetch_assoc();
-
-            // if($user['admin'] == 1){
-            ?>
-                <!-- <li><a class='reglog' href="../Admin/a_login.php">Admin Page</a></li> -->
-            <?php
-            // }
-            ?>
     </ul>
 </nav>

@@ -12,13 +12,14 @@
                 $hash = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
 
                 $conn->query("INSERT INTO users VALUES (id, '$_POST[username]', '$hash', 0)");
-                $stmt = "SELECT id FROM users WHERE username = '$_POST[username]'";
+                $stmt = "SELECT id, admin FROM users WHERE username = '$_POST[username]'";
                 $result = $conn->query($stmt);
                 $row = $result->fetch_assoc();
 
                 $conn->query("INSERT INTO profile VALUES (id, $row[id], 0, 0, 0, 0, 0, 0)");
 
                 setcookie("userid", $row['id'], time() + 3600, "/");
+                setcookie("adminid", $row['admin'], time() + 3600, "/");
                 header("Location: index.php");
             }
             else {
@@ -38,6 +39,7 @@
             $row = $result->fetch_assoc();
             if (password_verify($_POST['password'], $row['password'])) {
                 setcookie("userid", $row['id'], time() + 3600, "/");
+                setcookie("adminid", $row['admin'], time() + 3600, "/");
                 header("Location: index.php");
             }
             else {

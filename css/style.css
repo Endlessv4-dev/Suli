@@ -33,7 +33,7 @@ nav ul {
     gap: 15px;
 }
 
-.nav-item, .reglog {
+.nav-item, .reglog, .admin {
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -42,7 +42,7 @@ nav ul {
     transition: background 0.2s;
 }
 
-.nav-item:hover, .reglog:hover {
+.nav-item:hover, .reglog:hover, .admin:hover {
     background-color: #374151;
 }
 
