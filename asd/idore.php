@@ -47,25 +47,13 @@
     $target_item = $target_id ? $conn->query("SELECT * FROM items WHERE id = $target_id")->fetch_assoc() : null;
 
     if ($_SESSION['icon_game_status'] === 'playing' && $target_id) {
+        
         if (isset($_POST['guess-btn']) && !empty($_POST['guessed_item_id'])) {
             $guessed_id = (int)$_POST['guessed_item_id'];
 
             if ($guessed_id == $target_id) {
                 $_SESSION['icon_streak']++;
                 $_SESSION['icon_guessed_pool'][] = $target_id;
-                
-                if (isset($_COOKIE['userid'])) {
-                    $uid = (int)$_COOKIE['userid'];
-                    $current_streak = $_SESSION['icon_streak'];
-                    $pb_query = $conn->query("SELECT idore_streak FROM profile WHERE id = $uid");
-                    if ($pb_query && mysqli_num_rows($pb_query) > 0) {
-                        $pb_row = $pb_query->fetch_assoc();
-                        if ($current_streak > $pb_row['idore_streak']) {
-                            $conn->query("UPDATE profile SET idore_streak = $current_streak WHERE id = $uid");
-                        }
-                    }
-                }
-                
                 unset($_SESSION['icon_target_id']);
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();
@@ -99,6 +87,7 @@
     <title>LoLdle - Icon Time Attack</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../../css/style.css">
+    
     <style>
         #dropdown-menu img {
             display: none !important;
@@ -115,6 +104,7 @@
     </div>
     
     <?php if ($game_status === 'playing' && $target_item) { ?>
+        
         <div id="countdown-timer" style="font-size: 38px; font-weight: bold; color: #ef4444; margin: 10px 0;">5</div>
 
         <div style="margin-bottom: 25px;">
@@ -126,7 +116,9 @@
             <input type="text" id="search-input" class="search-input" placeholder="Type item name..." autocomplete="off" autofocus>
             <div id="dropdown-menu" class="dropdown-menu"></div>
         </div>
+
     <?php } else { ?>
+        
         <div class="win-box" style="background-color: #991b1b; border-color: #ef4444;">
             <?php if ($_SESSION['gameover_reason'] === 'lost_wrong' || $_SESSION['gameover_reason'] === 'wrong') { ?>
                 <h3>❌ Game Over: Wrong Answer!</h3>
@@ -146,6 +138,7 @@
                 <button type="submit" name="reset-btn" style="background-color: #2563eb; margin: 5px 0 0 0;">Try Again</button>
             </form>
         </div>
+
     <?php } ?>
 </div>
 
@@ -160,6 +153,7 @@
 
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
+                
                 var form = $('<form method="POST"></form>');
                 form.append('<input type="hidden" name="timeout-trigger" value="1">');
                 $('body').append(form);

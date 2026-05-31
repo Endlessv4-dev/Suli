@@ -20,6 +20,7 @@
     }
     
     $target_id = $_SESSION['target_id'];
+
     $target_item = $conn->query("SELECT * FROM items WHERE id = $target_id")->fetch_assoc();
 
     $target_stats_query = $conn->query("SELECT stat_name FROM item_stats WHERE item_id = $target_id");
@@ -33,17 +34,8 @@
     }
 
     $game_won = in_array($target_id, $_SESSION['guesses']);
-    $error_message = "";
 
-    $personal_best = "N/A";
-    if (isset($_COOKIE['userid'])) {
-        $uid = (int)$_COOKIE['userid'];
-        $pb_query = $conn->query("SELECT hatteres_best FROM profile WHERE id = $uid");
-        if ($pb_query && mysqli_num_rows($pb_query) > 0) {
-            $pb_row = $pb_query->fetch_assoc();
-            $personal_best = $pb_row['hatteres_best'] ? $pb_row['hatteres_best'] : "No wins yet";
-        }
-    }
+    $error_message = "";
 
     if (isset($_POST['guess-btn']) && !empty($_POST['guessed_item_id']) && !$game_won) {
         $guessed_id = (int)$_POST['guessed_item_id'];
@@ -55,14 +47,6 @@
                 
                 if ($guessed_id == $target_id) {
                     $game_won = true;
-                    $current_guesses = count($_SESSION['guesses']);
-                    
-                    if (isset($_COOKIE['userid'])) {
-                        if ($personal_best === "No wins yet" || $current_guesses < $personal_best) {
-                            $conn->query("UPDATE profile SET hatteres_best = $current_guesses WHERE id = $uid");
-                            $personal_best = $current_guesses;
-                        }
-                    }
                 }
             } else {
                 $error_message = "You have already guessed this item!";
@@ -82,30 +66,26 @@
 </head>
 <body>
 
-<?php require "../../Functions/nav.php"; ?>
-
 <div class="container">
     <h2>Guess Today's League of Legends Item!</h2>
     
-    <div style="font-size: 18px; color: #9ca3af; margin-bottom: 5px;">
+    <div class="guess-counter" style="font-size: 18px; margin-bottom: 20px; color: #9ca3af;">
         Number of guesses: <strong style="color: #f59e0b;"><?= count($_SESSION['guesses']); ?></strong>
     </div>
-    <?php if(isset($_COOKIE['userid'])){ ?>
-        <div class="pb-display">Your Best: <?= $personal_best; ?> guesses</div>
-    <?php } else { ?>
-        <div class="pb-display" style="color: #6b7280;">Log in to save your best score!</div>
-    <?php } ?>
     
     <?php if ($game_won) { ?>
         <div class="win-box">
             <h3>🎉 GG! You guessed the correct item: <?= htmlspecialchars($target_item['name']); ?>!</h3>
             <form method="POST">
-                <button type="submit" name="reset-btn">Play Again</button>
+                <button type="submit" name="reset-btn" style="background-color: #2563eb;">Play Again</button>
             </form>
         </div>
     <?php } else { ?>
-        <input type="text" id="searchbox" placeholder="Click or type item name..." autocomplete="off">
-        <div id="names"></div>
+        <div class="search-wrapper" id="search-wrapper">
+            <input type="text" id="search-input" class="search-input" placeholder="Click or type item name..." autocomplete="off">
+            
+            <div id="dropdown-menu" class="dropdown-menu"></div>
+        </div>
         
         <?php if (!empty($error_message)) { ?>
             <p class="error-msg"><?= $error_message; ?></p>
@@ -118,8 +98,7 @@
                 <tr>
                     <th>Icon</th>
                     <th>Name</th>
-                    <th>Stats</th> 
-                    <th>Effect Type</th>
+                    <th>Stats</th> <th>Effect Type</th>
                     <th>Item Tier</th>
                     <th>Cost</th>
                 </tr>
@@ -216,9 +195,17 @@
 </div>
 
 <script>
-    document.getElementById('searchbox').addEventListener('keyup', (e) => {
-        var value = e.target.value;
-        $('#names').load("../../Functions/search_items.php?typed=" + value);
+    $('#search-input').on('focus input', function() {
+        var value = $(this).val();
+        $('#dropdown-menu').load('search_items.php?keresett=' + value);
+        
+        $('#dropdown-menu').show();
+    });
+
+    $(document).click(function(e) {
+        if (!$(e.target).closest('#search-wrapper').length) {
+            $('#dropdown-menu').hide();
+        }
     });
 </script>
 
