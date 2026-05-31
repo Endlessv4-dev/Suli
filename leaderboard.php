@@ -2,12 +2,114 @@
 
     require "Connection/config.php";
 
-// $lekerdezes = "SELECT * FROM profile WHERE userid = '$_COOKIE[id]' ORDER BY bg_last_guess_win DESC";
-$lekerdezes = "SELECT * FROM profile ORDER BY bg_least_guess_win DESC";
-$talalt_sorok = $conn->query($lekerdezes);
-while($sor = $talalt_sorok->fetch_assoc()){
-    echo "<tr><td>".$sor["bg_least_guess_win"]."</td><td>".$sor["timer_most_streak"]."</td><td>".$sor["stats_least_guess_win"]."</td><td>".$sor["sound_least_guess_win"]."</td><td>".$sor["icon_least_guess_win"]."</td></tr>"."<tr><td>".$sor["desc_least_guess_win"]."</td><td>";
-}
-
-
+    $lekerdezes = "SELECT * FROM profile ORDER BY bg_least_guess_win ASC LIMIT 5";
+    $talalt_bg = $conn->query($lekerdezes);
 ?>
+<table>
+    <th>Classic Leaderboard</th>
+<?php
+    while($bg = $talalt_bg->fetch_assoc()){
+        $lekerdezes = "SELECT * FROM users WHERE id=$bg[userid]";
+        $talalt_user = $conn->query($lekerdezes);
+        $user = $talalt_user->fetch_assoc();
+
+        echo "<tr><td>".$user['username']."<span>".$bg['bg_least_guess_win']."</span></tr></td>";
+        
+    }
+?>
+</table>
+
+<!-- -------------------------------------- -->
+<?php
+    $lekerdezes = "SELECT * FROM profile ORDER BY timer_most_streak DESC LIMIT 5";
+    $talalt_timer = $conn->query($lekerdezes);
+?>
+<table>
+    <th>Time Attack Leaderboard</th>
+<?php
+    while($tr = $talalt_timer->fetch_assoc()){
+        $lekerdezes = "SELECT * FROM users WHERE id=$tr[userid]";
+        $talalt_user = $conn->query($lekerdezes);
+        $user = $talalt_user->fetch_assoc();
+
+        echo "<tr><td>".$user['username']."<span>".$tr['timer_most_streak']."</span></tr></td>";
+        
+    }
+?>
+</table>
+
+<!-- -------------------------------------- -->
+<?php
+    $lekerdezes = "SELECT * FROM profile ORDER BY stats_least_guess_win ASC LIMIT 5";
+    $talalt_stats = $conn->query($lekerdezes);
+?>
+<table>
+    <th>Stats Leaderboard</th>
+<?php
+    while($st = $talalt_stats->fetch_assoc()){
+        $lekerdezes = "SELECT * FROM users WHERE id=$st[userid]";
+        $talalt_user = $conn->query($lekerdezes);
+        $user = $talalt_user->fetch_assoc();
+
+        echo "<tr><td>".$user['username']."<span>".$st['stats_least_guess_win']."</span></tr></td>";
+        
+    }
+?>
+</table>
+
+<!-- -------------------------------------- -->
+<?php
+    $lekerdezes = "SELECT * FROM profile ORDER BY sound_least_guess_win ASC LIMIT 5";
+    $talalt_sound = $conn->query($lekerdezes);
+?>
+<table>
+    <th>Sound Leaderboard</th>
+<?php
+    while($snd = $talalt_sound->fetch_assoc()){
+        $lekerdezes = "SELECT * FROM users WHERE id=$snd[userid]";
+        $talalt_user = $conn->query($lekerdezes);
+        $user = $talalt_user->fetch_assoc();
+
+        echo "<tr><td>".$user['username']."<span>".$snd['sound_least_guess_win']."</span></tr></td>";
+        
+    }
+?>
+</table>
+
+<!-- -------------------------------------- -->
+<?php
+    $lekerdezes = "SELECT * FROM profile ORDER BY icon_least_guess_win ASC LIMIT 5";
+    $talalt_icon = $conn->query($lekerdezes);
+?>
+<table>
+    <th>Icon Leaderboard</th>
+<?php
+    while($ic = $talalt_icon->fetch_assoc()){
+        $lekerdezes = "SELECT * FROM users WHERE id=$ic[userid]";
+        $talalt_user = $conn->query($lekerdezes);
+        $user = $talalt_user->fetch_assoc();
+
+        echo "<tr><td>".$user['username']."<span>".$ic['icon_least_guess_win']."</span></tr></td>";
+        
+    }
+?>
+</table>
+
+<!-- -------------------------------------- -->
+<?php
+    $lekerdezes = "SELECT * FROM profile ORDER BY desc_least_guess_win ASC LIMIT 5";
+    $talalt_desc = $conn->query($lekerdezes);
+?>
+<table>
+    <th>Description Leaderboard</th>
+<?php
+    while($dc = $talalt_desc->fetch_assoc()){
+        $lekerdezes = "SELECT * FROM users WHERE id=$dc[userid]";
+        $talalt_user = $conn->query($lekerdezes);
+        $user = $talalt_user->fetch_assoc();
+
+        echo "<tr><td>".$user['username']."<span>".$dc['icon_least_guess_win']."</span></tr></td>";
+        
+    }
+?>
+</table>

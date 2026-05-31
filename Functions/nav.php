@@ -7,7 +7,7 @@
         <li><a href="../stats/statok.php" class='nav-item'>Stats</a></li>
         <li><a href="../timer/idore.php" class='nav-item'>Time Attack</a></li>
         <?php if(isset($_COOKIE['userid'])){ ?>
-            <li><a class='reglog' href="../logout.php" style="color: #ff0000">Logout</a></li>
+            <li><a class='reglog' href="../logout.php" style="color: #ff0000;">Logout</a></li>
         <?php } else { ?>
             <li><a class='reglog' href="../reglog.php" style="color: '#008000';">Login</a></li>
         <?php } ?>
