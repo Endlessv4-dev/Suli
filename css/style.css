@@ -194,9 +194,9 @@ td {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 
-.correct { background-color: #15803d !important; }   
-.partial { background-color: #b45309 !important; }   
-.incorrect { background-color: #b91c1c !important; } 
+.correct { background-color: #15803d !important; }
+.partial { background-color: #b45309 !important; }
+.incorrect { background-color: #b91c1c !important; }
 
 .arrow {
     display: block;
