@@ -67,7 +67,7 @@
         <h2>Login to Your Account</h2>
         
         <div class="auth-group">
-            <input type="text" name="username" placeholder="Username" class="auth-input" autocomplete="off" required>
+            <input type="text" name="username" placeholder="Username" class="auth-input" required>
         </div>
         
         <div class="auth-group-last">
@@ -85,7 +85,7 @@
         <h2>Create an Account</h2>
         
         <div class="auth-group">
-            <input type="text" name="username" placeholder="Username" class="auth-input" autocomplete="off" required>
+            <input type="text" name="username" placeholder="Username" class="auth-input" required>
         </div>
         
         <div class="auth-group">
