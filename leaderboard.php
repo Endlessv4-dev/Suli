@@ -18,12 +18,12 @@
         <li><a href="./games/stats/statok.php" class='nav-item'>Stats</a></li>
         <li><a href="./games/timer/idore.php" class='nav-item'>Time Attack</a></li>
         <?php if(isset($_COOKIE['userid'])){ ?>
-            <li><a class='reglog' href="../../logout.php" style="color: #ff0000;">Logout</a></li>
+            <li><a class='reglog' href="./logout.php" style="color: #ff0000;">Logout</a></li>
             <?php if($_COOKIE['adminid'] == 1){ ?>
-                <li><a class='admin' href="../../Admin/admin.php" style="color: #ff6060;">Admin</a></li>  
+                <li><a class='admin' href="./Admin/admin.php" style="color: #ff6060;">Admin</a></li>  
             <?php } ?>
         <?php } else { ?>
-            <li><a class='reglog' href="../../reglog.php" style="color: #008000">Login</a></li>
+            <li><a class='reglog' href="./reglog.php" style="color: #008000">Login</a></li>
         <?php } ?>
     </ul>
 </nav>
