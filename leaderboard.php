@@ -35,7 +35,7 @@
         <?php
             require "Connection/config.php";
 
-            $lekerdezes = "SELECT * FROM profile ORDER BY bg_least_guess_win ASC LIMIT 5";
+            $lekerdezes = "SELECT * FROM profile ORDER BY bg_least_guess_win DESC LIMIT 5";
             $talalt_bg = $conn->query($lekerdezes);
         ?>
         <div class="top5">
@@ -73,7 +73,7 @@
         </div>
 
         <?php
-            $lekerdezes = "SELECT * FROM profile ORDER BY stats_least_guess_win ASC LIMIT 5";
+            $lekerdezes = "SELECT * FROM profile ORDER BY stats_least_guess_win DESC LIMIT 5";
             $talalt_stats = $conn->query($lekerdezes);
         ?>
         <div class="top5">
@@ -92,7 +92,7 @@
         </div>
 
         <?php
-            $lekerdezes = "SELECT * FROM profile ORDER BY sound_least_guess_win ASC LIMIT 5";
+            $lekerdezes = "SELECT * FROM profile ORDER BY sound_least_guess_win DESC LIMIT 5";
             $talalt_sound = $conn->query($lekerdezes);
         ?>
         <div class="top5">
@@ -111,7 +111,7 @@
         </div>
 
         <?php
-            $lekerdezes = "SELECT * FROM profile ORDER BY icon_best_streak ASC LIMIT 5";
+            $lekerdezes = "SELECT * FROM profile ORDER BY icon_best_streak DESC LIMIT 5";
             $talalt_icon = $conn->query($lekerdezes);
         ?>
         <div class="top5">
@@ -130,7 +130,7 @@
         </div>
 
         <?php
-            $lekerdezes = "SELECT * FROM profile ORDER BY desc_least_guess_win ASC LIMIT 5";
+            $lekerdezes = "SELECT * FROM profile ORDER BY desc_least_guess_win DESC LIMIT 5";
             $talalt_desc = $conn->query($lekerdezes);
         ?>
         <div class="top5">
@@ -138,7 +138,7 @@
                 <div class="top5-header">Description Leaderboard</div>
                 <?php
                 while($dc = $talalt_desc->fetch_assoc()){
-                    $lekerdezes = "SELECT * FROM users WHERE id=$dc[userid]";
+                    $lekerdezes = "SELECT * FROM users WHERE id=$dc[userid] ";
                     $talalt_user = $conn->query($lekerdezes);
                     $user = $talalt_user->fetch_assoc();
 
