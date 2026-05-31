@@ -3,9 +3,6 @@
     require "../../Connection/config.php";
     require "../../Functions/message.php";
 
-    if (!isset($_SESSION['leiras_streak'])) {
-        $_SESSION['leiras_streak'] = 0;
-    }
     if (!isset($_SESSION['guesses'])) {
         $_SESSION['guesses'] = [];
     }
@@ -34,7 +31,7 @@
         $uid = (int)$_COOKIE['userid'];
         $pb_query = $conn->query("SELECT desc_least_guess_win FROM profile WHERE userid = $uid");
         if ($pb_query && mysqli_num_rows($pb_query) > 0) {
-            $personal_best = $pb_query->fetch_assoc()['desc_least_guess_win'];
+            $personal_best = (int)$pb_query->fetch_assoc()['desc_least_guess_win'];
         }
     }
 
@@ -68,18 +65,16 @@
 
             if ($guessed_id == $target_id) {
                 $game_won = true;
-                $_SESSION['leiras_streak']++;
                 
                 if (isset($_COOKIE['userid'])) {
-                    $uid = (int)$_COOKIE['userid'];
-                    $current_streak = $_SESSION['leiras_streak'];
-                    if ($current_streak > $personal_best) {
-                        $conn->query("UPDATE profile SET desc_least_guess_win = $current_streak WHERE id = $uid");
-                        $personal_best = $current_streak;
+                    $uid = (int)$_COOKIE['userid']; 
+                    $current_guesses = count($_SESSION['guesses']);
+                    // If no previous best exists (0) or current guess count is less than the previous best record
+                    if ($personal_best == 0 || $current_guesses < $personal_best) {
+                        $conn->query("UPDATE profile SET desc_least_guess_win = $current_guesses WHERE userid = $uid");
+                        $personal_best = $current_guesses;
                     }
                 }
-            } else {
-                $_SESSION['leiras_streak'] = 0;
             }
         } else {
             $error_message = "Item not found!";
@@ -116,7 +111,7 @@
         Number of guesses: <strong style="color: #f59e0b;"><?= count($_SESSION['guesses']); ?></strong>
     </div>
     <?php if(isset($_COOKIE['userid'])){ ?>
-        <div class="pb-display">Your Best: <?= $personal_best; ?> guesses</div>
+        <div class="pb-display">Your Best: <?= $personal_best > 0 ? $personal_best . ' guesses' : 'None yet'; ?></div>
     <?php } else { ?>
         <div class="pb-display" style="color: #6b7280;">Log in to save your best score!</div>
     <?php } ?>
@@ -129,7 +124,7 @@
             </form>
         </div>
     <?php } else { ?>
-        <input type="text" id="searchbox" placeholder="Click or type item name..." autocomplete="off">
+        <input type="text" id="searchbox" placeholder="Click or type item name..." autocomplete="off" autofocus>
         <div id="names"></div>
         
         <?php if (!empty($error_message)) { ?>

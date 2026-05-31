@@ -132,7 +132,7 @@
             </form>
         </div>
     <?php } else { ?>
-        <input type="text" id="searchbox" placeholder="Click or type item name..." autocomplete="off">
+        <input type="text" id="searchbox" placeholder="Click or type item name..." autocomplete="off" autofocus>
         <div id="names"></div>
         
         <?php if (!empty($error_message)) { ?>
