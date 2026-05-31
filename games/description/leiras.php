@@ -11,7 +11,6 @@
         unset($_SESSION['leiras_target_id']);
         unset($_SESSION['guesses']);
         header("Location: leiras.php");
-        exit();
     }
 
     if (!isset($_SESSION['leiras_target_id'])) {

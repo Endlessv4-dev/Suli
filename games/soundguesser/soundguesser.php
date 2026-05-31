@@ -10,7 +10,6 @@
         unset($_SESSION['sound_target_id']);
         unset($_SESSION['guesses']);
         header("Location: soundguesser.php");
-        exit();
     }
 
     if (!isset($_SESSION['sound_target_id'])) {

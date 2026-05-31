@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoLdle Clone</title>
+    <title>Guess The Lol</title>
     <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="container">
-        <div class="home-logo">LOLDLE CLONE</div>
+        <div class="home-logo">Guess The Lol</div>
         
         <p style="margin-bottom: 30px; color: #9ca3af;">Select a game mode to start playing.</p>
 

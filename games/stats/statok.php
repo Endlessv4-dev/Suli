@@ -11,7 +11,6 @@
         unset($_SESSION['stats_target_id']);
         unset($_SESSION['stats_guesses']);
         header("Location: statok.php");
-        exit();
     }
 
     if (!isset($_SESSION['stats_target_id'])) {

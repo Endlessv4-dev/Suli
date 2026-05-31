@@ -11,7 +11,6 @@
         unset($_SESSION['gameover_reason']);
         unset($_SESSION['last_wrong_guess']);
         header("Location: idore.php");
-        exit();
     }
 
     if (!isset($_SESSION['icon_streak'])) {

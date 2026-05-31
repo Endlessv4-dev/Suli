@@ -10,7 +10,6 @@
         unset($_SESSION['icon_guesser_target_id']);
         $_SESSION['counter'] = 5;
         header("Location: iconguesser.php");
-        exit();
     }
 
     if (!isset($_SESSION['icon_guesser_target_id'])) {
