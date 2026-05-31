@@ -25,12 +25,45 @@
     $target_id = $_SESSION['sound_target_id'] ?? 0;
     $item = $conn->query("SELECT * FROM items WHERE id = $target_id")->fetch_assoc();
 
+<<<<<<< HEAD
+    $game_won = false;
+
+    echo "<div class='item-container'>";
+    echo "<h1>Guess the item!</h1>";
+    
+    if ($item && !empty($item['audio'])) {
+        echo "<audio class = 'audio-source' controls><source src='../../Items/" . $item['name'] . "/" . $item['audio'] . "' type='audio/mpeg' >Your browser does not support the audio element.</audio> ";
+        
+        if (isset($_POST['guess'])) {
+            if (strtolower($_POST['guess']) == strtolower($item['name'])) {
+                echo "<h2>Correct!</h2>";
+                echo "<h2>The answer was: " . $item['name'] . "</h2>";
+                $game_won = true;
+                $_SESSION['sound_streak']++;
+                
+                if (isset($_COOKIE['userid'])) {
+                    $uid = (int)$_COOKIE['userid'];
+                    $current_streak = $_SESSION['sound_streak'];
+                    $pb_query = $conn->query("SELECT hang_best FROM profile WHERE id = $uid");
+                    if ($pb_query && mysqli_num_rows($pb_query) > 0) {
+                        $pb_row = $pb_query->fetch_assoc();
+                        if ($current_streak > $pb_row['hang_best']) {
+                            $conn->query("UPDATE profile SET hang_best = $current_streak WHERE id = $uid");
+                        }
+                    }
+                }
+            } else {
+                echo "<h2>Wrong! The correct answer was: " . $item['name'] . "</h2>";
+                $_SESSION['sound_streak'] = 0;
+            }
+=======
     $personal_best = 0;
     if (isset($_COOKIE['userid'])) {
         $uid = (int)$_COOKIE['userid'];
         $pb_query = $conn->query("SELECT sound_least_guess_win FROM profile WHERE userid = $uid");
         if ($pb_query && mysqli_num_rows($pb_query) > 0) {
             $personal_best = (int)$pb_query->fetch_assoc()['sound_least_guess_win'];
+>>>>>>> 13cf9fa2fc7c9154136c7ea48a00b51be45f174a
         }
     }
 
