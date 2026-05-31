@@ -28,11 +28,6 @@
 
     echo "<div class='item-container'>";
     echo "<h1>Guess the item!</h1>";
-
-    $game_won = false;
-
-    echo "<div class='item-container'>";
-    echo "<h1>Guess the item!</h1>";
     
     if ($item && !empty($item['audio'])) {
         echo "<audio class = 'audio-source' controls><source src='../../Items/" . $item['name'] . "/" . $item['audio'] . "' type='audio/mpeg' >Your browser does not support the audio element.</audio> ";
