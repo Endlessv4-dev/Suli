@@ -30,13 +30,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Admin</title>
 </head>
 <body>
-    <form method="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" name="login-btn" value="Login">
-    </form>
+    <div class="container auth-container">
+        <form method="post" class="auth-form">
+            
+            <div class="auth-group">
+                <input type="text" name="username" placeholder="Username" class="auth-input" required>
+            </div>
+            
+            <div class="auth-group-last">
+                <input type="password" name="password" placeholder="Password" class="auth-input" required>
+            </div>
+            
+            <button type="submit" name="login-btn" class="auth-btn-login">Login</button>
+            
+        </form>
+    </div>
 </body>
 </html>

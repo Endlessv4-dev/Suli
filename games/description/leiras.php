@@ -100,8 +100,17 @@
 
     <?php 
         if ($item && !$game_won) {
+            if($item['tier'] == "Epic"){
+                $tier = "<span style='color: #9400d3'>$item[tier]</span>";
+            }
+            else if($item['tier'] == "Legendary"){
+                $tier = "<span style='color: gold'>$item[tier]</span>";
+            }
+            else{
+                $tier = $item['tier'];
+            }
             echo "<div class='descript'>";
-            echo $item['tier']."<br>".$item['description'];
+            echo $tier."<br>".$item['description'];
             echo "</div>";
         }
     ?>
