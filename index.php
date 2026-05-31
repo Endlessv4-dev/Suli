@@ -25,12 +25,12 @@
         <p style="margin-bottom: 30px; color: #9ca3af;">Select a game mode to start playing.</p>
 
         <div class="game-grid">
-            <a href="background/hatteres.php" class="game-card">Background</a>
-            <a href="description/leiras.php" class="game-card">Description</a>
-            <a href="iconguesser/iconguesser.php" class="game-card">Icon</a>
-            <a href="soundguesser/soundguesser.php" class="game-card">Sound</a>
-            <a href="stats/statok.php" class="game-card">Stats</a>
-            <a href="timer/idore.php" class="game-card">Time Attack</a>
+            <a href="./games/background/hatteres.php" class="game-card">Background</a>
+            <a href="./games/description/leiras.php" class="game-card">Description</a>
+            <a href="./games/iconguesser/iconguesser.php" class="game-card">Icon</a>
+            <a href="./games/soundguesser/soundguesser.php" class="game-card">Sound</a>
+            <a href="./games/stats/statok.php" class="game-card">Stats</a>
+            <a href="./games/timer/idore.php" class="game-card">Time Attack</a>
         </div>
     </div>
 
