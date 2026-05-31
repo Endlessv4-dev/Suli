@@ -218,7 +218,7 @@
 <script>
     document.getElementById('searchbox').addEventListener('keyup', (e) => {
         var value = e.target.value;
-        $('#names').load("../../Functions/search_items.php?typed=" + value);
+        $('#names').load("../../Functions/search_items_bg.php?typed=" + value);
     });
 </script>
 

@@ -1,6 +1,6 @@
 <nav>
     <ul>
-        <li><a href="../index.php" class='nav-item' style="color: #4d669b;">Home</a></li>
+        <li><a href="../../index.php" class='nav-item' style="color: #4d669b;">Home</a></li>
         <li><a href="../background/hatteres.php" class='nav-item'>Classic</a></li>
         <li><a href="../description/leiras.php" class='nav-item'>Description</a></li>
         <li><a href="../iconguesser/iconguesser.php" class='nav-item'>Icon</a></li>
