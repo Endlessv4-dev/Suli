@@ -31,6 +31,7 @@
             <a href="./games/soundguesser/soundguesser.php" class="game-card">Sound</a>
             <a href="./games/stats/statok.php" class="game-card">Stats</a>
             <a href="./games/timer/idore.php" class="game-card">Time Attack</a>
+            <a href="./leaderboard.php" class="game-card">Leaderboard</a>
         </div>
     </div>
 
