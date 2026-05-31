@@ -38,10 +38,10 @@
     $personal_best = "N/A";
     if (isset($_COOKIE['userid'])) {
         $uid = (int)$_COOKIE['userid'];
-        $pb_query = $conn->query("SELECT hatteres_best FROM profile WHERE id = $uid");
+        $pb_query = $conn->query("SELECT bg_least_guess_win FROM profile WHERE userid = $uid");
         if ($pb_query && mysqli_num_rows($pb_query) > 0) {
             $pb_row = $pb_query->fetch_assoc();
-            $personal_best = $pb_row['hatteres_best'] ? $pb_row['hatteres_best'] : "No wins yet";
+            $personal_best = $pb_row['bg_least_guess_win'] ? $pb_row['bg_least_guess_win'] : "No wins yet";
         }
     }
 
@@ -59,7 +59,7 @@
                     
                     if (isset($_COOKIE['userid'])) {
                         if ($personal_best === "No wins yet" || $current_guesses < $personal_best) {
-                            $conn->query("UPDATE profile SET hatteres_best = $current_guesses WHERE id = $uid");
+                            $conn->query("UPDATE profile SET bg_least_guess_win = $current_guesses WHERE userid = $uid");
                             $personal_best = $current_guesses;
                         }
                     }

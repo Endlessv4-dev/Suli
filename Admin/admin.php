@@ -28,7 +28,7 @@
         if (move_uploaded_file($tmp_icon_file, $path_icon)) {
             $audio_db_value = "-";
 
-            if (!empty($audio_file) && $_FILES['upload-audio']['error' === UPLOAD_ERR_OK]) {
+            if (!empty($audio_file) && $_FILES['upload-audio']['error']=== UPLOAD_ERR_OK) {
                 $path_audio = $folder."\\".$audio_file;
                 if (move_uploaded_file($tmp_audio_file, $path_audio)) {
                     $audio_db_value = $audio_file;
@@ -40,6 +40,11 @@
 
             $effects = $_POST['effect_types'];
             $description = $_POST['description'];
+            $name = $conn->real_escape_string($name);
+            $effects = $conn->real_escape_string($effects);
+            $description = $conn->real_escape_string($description);
+            $icon_file = $conn->real_escape_string($icon_file);
+            $audio_db_value = $conn->real_escape_string($audio_db_value);
 
             $conn->query("INSERT INTO items VALUES (id, '$name', '$tier', $cost, '$effects', '$description', '$audio_db_value','$icon_file')");
 

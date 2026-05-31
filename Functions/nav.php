@@ -9,7 +9,7 @@
         <?php if(isset($_COOKIE['userid'])){ ?>
             <li><a class='reglog' href="../logout.php" style="color: #ff0000;">Logout</a></li>
         <?php } else { ?>
-            <li><a class='reglog' href="../reglog.php" style="color: '#008000';">Login</a></li>
+            <li><a class='reglog' href="../reglog.php" style="color: #008000">Login</a></li>
         <?php } ?>
         <?php
         
