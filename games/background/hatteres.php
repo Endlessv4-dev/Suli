@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    
+
     require "../../Connection/config.php";
 
     if (isset($_POST['reset-btn'])) {

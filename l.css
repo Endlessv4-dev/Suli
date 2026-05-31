@@ -1,0 +1,31 @@
+.top5{
+	float: left;
+	width: 15%;
+	padding: 15px;
+}
+
+.top5-form{
+	width: 100%;
+	box-shadow: 0px 5px 5px red;
+	border-top: 3px solid #222;
+}
+
+.top5-form .top5-header{
+	display: block;
+	padding: 5px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	border-bottom: 1px solid red;
+}
+
+.top5-form .top5-player{
+	display: block;
+	padding: 7px 10px;
+	font-size: 20px;
+	border-bottom: 1px solid red;
+}
+
+.top5-form .top5-player span{
+	float: right;
+}
