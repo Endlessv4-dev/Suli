@@ -3,6 +3,7 @@
 
     require "../../Connection/config.php";
     require "../../Functions/message.php";
+    require "../../Functions/nav.php";
 
     $inquiry = "SELECT * FROM items ORDER BY RAND()";
     $f_item = $conn->query($inquiry);
@@ -37,6 +38,7 @@
         }
     }
 ?>
+<link rel="stylesheet" href="../../css/nav.css">
 
     <form method="post" class='desc-form'>
         <input type="text" name="guess" placeholder="Start Typing...">
