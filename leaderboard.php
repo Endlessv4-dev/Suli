@@ -116,7 +116,7 @@
         ?>
         <div class="top5">
             <div class="top5-form">
-                <div class="top5-header">Icon Leaderboard</div>
+                <div class="top5-header">Icon<br>Leaderboard</div>
                 <?php
                 while($ic = $talalt_icon->fetch_assoc()){
                     $lekerdezes = "SELECT * FROM users WHERE id=$ic[userid]";
