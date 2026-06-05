@@ -32,6 +32,10 @@
             <a href="./games/stats/statok.php" class="game-card">Stats</a>
             <a href="./games/timer/idore.php" class="game-card">Time Attack</a>
             <a href="./leaderboard.php" class="game-card">Leaderboard</a>
+            <?php 
+            if(isset($_COOKIE["adminid"])){?>
+                <a href="./Admin/admin.php" class="game-card" style="color: black; background-color: #ff6060;">Admin</a>
+            <?php } ?>
         </div>
     </div>
 

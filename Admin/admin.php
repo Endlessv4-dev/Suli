@@ -79,61 +79,103 @@
     <title>Admin Panel</title>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
-        <label for="audio">Audio</label>
-        <input type="file" name="upload-audio" id="audio">
-        <label for="icon">Icon</label>
-        <input type="file" name="upload-icon" id="icon" required>
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="text" name="tier" placeholder="Tier" required>
-        <input type="number" name="cost" placeholder="Cost" required>
-        <textarea name="description" placeholder="Description"></textarea>
-        <select name="effect_types">
-            <option value="none">None</option>
-            <option value="passive">Passive</option>
-            <option value="active">Active</option>
-            <option value="passive_active">Passive / Active</option>
-        </select>
-
-        <h3>Stats</h3>
-        <div id="stat-container">
-            <div class="stat-row">
-                <select name="stat_names[]">
-                    <option value="ability_haste">Ability Haste</option>
-                    <option value="ability_power">Ability Power</option>
-                    <option value="armor">Armor</option>
-                    <option value="armor_penetration">Armor Penetration</option>
-                    <option value="attack_damage">Attack Damage</option>
-                    <option value="attack_speed">Attack Speed</option>
-                    <option value="base_health_regen">Base Health Regen</option>
-                    <option value="base_mana_regen">Base Mana Regen</option>
-                    <option value="critical_strike_chance">Critical Strike Chance</option>
-                    <option value="gold_income">Gold Income</option>
-                    <option value="heal_and_shield_power">Heal and Shield Power</option>
-                    <option value="health">Health</option>
-                    <option value="lethality">Lethality</option>
-                    <option value="life_steal">Life Steal</option>
-                    <option value="magic_penetration">Magic Penetration</option>
-                    <option value="magic_resistance">Magic Resistance</option>
-                    <option value="mana">Mana</option>
-                    <option value="movement_speed">Movement Speed</option>
-                    <option value="omnivamp">Omnivamp</option>
-                    <option value="slow_resist">Slow Resist</option>
-                    <option value="summoner_spell_haste">Summoner Spell Haste</option>
-                    <option value="tenacity">Tenacity</option>
-                    <option value="ultimate_haste">Ultimate Haste</option>
-                </select>
-                <input type="number" step="0.1" name="stat_values[]" placeholder="Value" required>
-                <select name="stat_types[]">
-                    <option value="flat">Flat</option>
-                    <option value="%">Percentage (%)</option>
+    <nav>
+        <ul>
+            <li><a href="../index.php" class='nav-item' style="color: #4d669b;">Home</a></li>
+            <li><a href="../leaderboard.php" class='nav-item'>Leaderboard</a></li>
+            <li><a href="../games/background/hatteres.php" class='nav-item'>Classic</a></li>
+            <li><a href="../games/description/leiras.php" class='nav-item'>Description</a></li>
+            <li><a href="../games/iconguesser/iconguesser.php" class='nav-item'>Icon</a></li>
+            <li><a href="../games/soundguesser/soundguesser.php" class='nav-item'>Sound</a></li>
+            <li><a href="../games/stats/statok.php" class='nav-item'>Stats</a></li>
+            <li><a href="../games/timer/idore.php" class='nav-item'>Time Attack</a></li>
+            <?php if(isset($_COOKIE['userid'])){ ?>
+                <li><a class='reglog' href="../logout.php" style="color: #ff0000;">Logout</a></li>
+                <?php if($_COOKIE['adminid'] == 1){ ?>
+                    <li><a class='admin' href="../Admin/admin.php" style="color: #ff6060;">Admin</a></li>  
+                <?php } ?>
+            <?php } else { ?>
+                <li><a class='reglog' href="../reglog.php" style="color: #008000">Login</a></li>
+            <?php } ?>
+        </ul>
+    </nav>
+    <div class="container auth-containter">
+        <form method="post" enctype="multipart/form-data">
+            <div class="auth-group">
+                <label for="audio" class="custom-file-upload">Audio</label>
+                <input type="file" name="upload-audio" id="audio" >
+            </div>
+            <div class="auth-group">
+                <label for="icon" class="custom-file-upload">Icon</label>
+                <input type="file" name="upload-icon" id="icon" required>
+            </div>
+            <div class="auth-group">
+                <input type="text" name="name" placeholder="Name" class="auth-input" required>
+            </div>
+            <div class="auth-group">
+                <input type="text" name="tier" placeholder="Tier" class="auth-input" required>
+            </div>
+            <div class="auth-group">
+                <input type="number" name="cost" placeholder="Cost" class="auth-input" required>
+            </div>
+            <div class="auth-group">
+                <textarea name="description" placeholder="Description" class="auth-input" ></textarea>
+            </div>
+            <div class="auth-group">
+                <select name="effect_types" class="auth-input" >
+                    <option value="none">None</option>
+                    <option value="passive">Passive</option>
+                    <option value="active">Active</option>
+                    <option value="passive_active">Passive / Active</option>
                 </select>
             </div>
-        </div>
 
-        <button type="button" onclick="addStat()">+ Add Another Stat</button>
-        <input type="submit" name="save-btn" value="Save Item">
-    </form>
+            <h3>Stats</h3>
+            <div id="stat-container">
+                <div class="stat-row">
+                    <div class="auth-group">
+                        <select name="stat_names[]" class="auth-input">
+                            <option value="ability_haste">Ability Haste</option>
+                            <option value="ability_power">Ability Power</option>
+                            <option value="armor">Armor</option>
+                            <option value="armor_penetration">Armor Penetration</option>
+                            <option value="attack_damage">Attack Damage</option>
+                            <option value="attack_speed">Attack Speed</option>
+                            <option value="base_health_regen">Base Health Regen</option>
+                            <option value="base_mana_regen">Base Mana Regen</option>
+                            <option value="critical_strike_chance">Critical Strike Chance</option>
+                            <option value="gold_income">Gold Income</option>
+                            <option value="heal_and_shield_power">Heal and Shield Power</option>
+                            <option value="health">Health</option>
+                            <option value="lethality">Lethality</option>
+                            <option value="life_steal">Life Steal</option>
+                            <option value="magic_penetration">Magic Penetration</option>
+                            <option value="magic_resistance">Magic Resistance</option>
+                            <option value="mana">Mana</option>
+                            <option value="movement_speed">Movement Speed</option>
+                            <option value="omnivamp">Omnivamp</option>
+                            <option value="slow_resist">Slow Resist</option>
+                            <option value="summoner_spell_haste">Summoner Spell Haste</option>
+                            <option value="tenacity">Tenacity</option>
+                            <option value="ultimate_haste">Ultimate Haste</option>
+                        </select>
+                    </div>
+                    <div class="auth-group">
+                        <input type="number" step="0.1" name="stat_values[]" placeholder="Value"  class="auth-input" required>
+                    </div>
+                    <div class="auth-group">
+                    <select name="stat_types[]" class="auth-input">
+                        <option value="flat">Flat</option>
+                        <option value="%">Percentage (%)</option>
+                    </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" onclick="addStat()">+ Add Another Stat</button>
+            <input type="submit" name="save-btn" value="Save Item" class="auth-btn-login" style="max-width: 200px;">
+        </form>
+    </div>
 
     <script>
         function addStat() {
